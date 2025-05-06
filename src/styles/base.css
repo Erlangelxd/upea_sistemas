@@ -1,0 +1,48 @@
+
+/* src/styles/base.css */
+:root {
+  --color-primary: #2563eb; /* Azul eléctrico moderno */
+  --color-primary-dark: #1d4ed8;
+  --color-secondary: #7c3aed; /* Violeta elegante */
+  --color-secondary-dark: #6d28d9;
+  --color-accent: #06b6d4; /* Turquesa tecnológico */
+  --color-white: #ffffff;
+  --color-black: #111827;
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5db;
+  --color-gray-400: #9ca3af;
+  --color-gray-500: #6b7280;
+  --color-gray-600: #4b5563;
+  --color-gray-700: #374151;
+  --color-gray-800: #1f2937;
+  --color-gray-900: #111827;
+  --glass-background: rgba(31, 41, 55, 0.7); /* Ajustado para glassmorphism */
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  --navbar-height: 70px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background: linear-gradient(135deg, var(--color-gray-900), var(--color-gray-800));
+  color: var(--color-gray-100);
+  min-height: 100vh;
+  line-height: 1.6;
+  padding-top: var(--navbar-height); /* Espacio para el navbar fijo */
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  position: relative; /* Necesario para algunos posicionamientos */
+}

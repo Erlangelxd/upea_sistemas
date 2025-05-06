@@ -1,0 +1,34 @@
+
+/* src/styles/typography.css */
+
+/* Tipografía */
+h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--color-white);
+}
+
+h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--color-gray-100);
+}
+
+p {
+  color: var(--color-gray-300);
+  margin-bottom: 1rem;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}

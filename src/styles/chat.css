@@ -1,0 +1,87 @@
+
+/* src/styles/chat.css */
+
+/* Container for the whole chat page */
+.chat-page-container {
+  width: 100%; /* Ensure it takes full width available in its grid column */
+}
+
+/* Semester Selector Card */
+.semester-selector {
+  margin-bottom: 2rem; /* Add space below selector */
+}
+
+.semester-selector .card-header,
+.chat-container .chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem; /* Increased margin */
+  padding-bottom: 1rem; /* Add padding bottom */
+  border-bottom: 1px solid var(--glass-border); /* Add separator line */
+}
+
+.semester-grid {
+  display: grid;
+  /* Adjust columns for better fit on larger screens */
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); 
+  gap: 1rem; /* Increased gap between buttons */
+  margin-bottom: 1.5rem; /* Add margin below grid */
+}
+
+/* Chat Container Card */
+.chat-container {
+  /* Limit height on larger screens, allow more flexibility */
+  max-height: 70vh; 
+  height: auto; /* Remove fixed height */
+  min-height: 400px; /* Ensure a minimum height */
+  display: flex;
+  flex-direction: column;
+  background: var(--glass-background);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  overflow: hidden; /* Para que el contenido no se salga */
+  margin-top: 0; /* Remove top margin if selector is separate */
+}
+
+.chat-messages {
+  flex-grow: 1; /* Ocupa el espacio restante */
+  overflow-y: auto; /* Scroll vertical si es necesario */
+  padding: 1.5rem;
+}
+
+.chat-input {
+  padding: 1rem 1.5rem; /* Adjusted padding */
+  background: rgba(31, 41, 55, 0.9); /* Fondo ligeramente diferente */
+  border-top: 1px solid var(--glass-border); /* Separador */
+  display: flex; /* Use flexbox */
+  gap: 1rem; /* Add gap between input and button */
+  flex-shrink: 0; /* Prevent input area from shrinking */
+}
+
+.chat-input .form-input {
+  flex-grow: 1; /* Input takes available space */
+}
+
+.chat-input .btn {
+  flex-shrink: 0; /* Prevent button from shrinking */
+  padding: 0.75rem; /* Adjust padding for icon button */
+}
+
+.chat-message {
+  background: rgba(255, 255, 255, 0.05); /* Fondo sutil para mensajes */
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  max-width: 80%; /* Limit message width */
+  word-wrap: break-word; /* Ensure long words break */
+}
+
+.chat-message strong {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: var(--color-primary); /* Highlight sender name */
+}
+
+/* Add specific styles for sender/receiver if needed */

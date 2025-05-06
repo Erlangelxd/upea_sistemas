@@ -1,0 +1,97 @@
+
+/* src/styles/layout.css */
+
+/* Contenido principal */
+.main-content {
+  display: grid;
+  /* Default: 2 columns (sidebar + content) for authenticated users */
+  grid-template-columns: minmax(250px, 1fr) minmax(600px, 3fr); 
+  gap: 2rem;
+  padding: 2rem 0;
+  min-height: calc(100vh - var(--navbar-height));
+  align-items: start; /* Align items to the top */
+}
+
+/* Styles for unauthenticated state (applied to .main-content) */
+.main-content-unauthenticated {
+  grid-template-columns: 1fr; /* Single column when not authenticated */
+  justify-items: center; /* Center the single column content */
+}
+
+/* Ensure the content block within the unauthenticated grid takes appropriate width */
+.main-content-unauthenticated > .content,
+.main-content-unauthenticated > .content-full-width > .register-container, /* Target Register specifically */
+.main-content-unauthenticated > .content-full-width > .profile-page-container /* Target Profile specifically */
+ {
+  grid-column: 1 / -1; /* Span the single column */
+  width: 100%; /* Take full width of the centered area */
+  max-width: 800px; /* Ajustado para mejor centrado visual */
+  margin: 0 auto; /* Center the block itself */
+}
+
+
+.sidebar {
+  background: var(--glass-background);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 1.5rem;
+  height: fit-content; 
+  transition: all 0.3s ease;
+  position: sticky; 
+  top: calc(var(--navbar-height) + 2rem); 
+  z-index: 10; 
+  grid-column: 1 / 2; /* Sidebar in the first column */
+}
+
+.sidebar:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--glass-shadow);
+}
+
+/* .content class used alongside sidebar */
+.content {
+  background: var(--glass-background);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 2rem;
+  animation: fadeIn 0.5s ease-in-out;
+  min-height: 500px; 
+  z-index: 5; 
+  grid-column: 2 / 3; /* Content in the second column */
+  box-sizing: border-box; /* Include padding in width calculation */
+}
+
+/* Specific centering for Feed content when unauthenticated */
+.content-centered-feed {
+   /* Styles applied via .main-content-unauthenticated > .content */
+   /* This class is mostly a marker now, but can hold specific feed styles if needed */
+}
+
+
+/* Styles for components rendered directly into main-content (full width) */
+.main-content > .content-full-width {
+  grid-column: 1 / -1; /* Span all available columns */
+  background: var(--glass-background);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 2rem;
+  animation: fadeIn 0.5s ease-in-out;
+  min-height: 500px;
+  z-index: 5;
+  width: 100%; /* Ensure it takes full width of the grid column */
+  max-width: 1000px; /* Ajustado para mejor centrado visual */
+  margin: 0 auto; /* Center the block */
+  box-sizing: border-box;
+}
+
+/* Ensure components inside the full-width wrapper behave as expected */
+/* Make direct children take full width, allowing internal centering */
+.content-full-width > * {
+   width: 100%;
+   box-sizing: border-box;
+   /* Allow components like Register/Profile to center their own content if needed */
+   /* margin: 0 auto; /* Removed this - let the component decide internal centering */
+}

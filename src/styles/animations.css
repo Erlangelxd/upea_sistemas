@@ -1,0 +1,14 @@
+
+/* src/styles/animations.css */
+
+/* Animaciones */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px); /* Restaurado */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0); /* Restaurado */
+  }
+}

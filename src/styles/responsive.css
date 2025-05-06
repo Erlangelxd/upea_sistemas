@@ -1,0 +1,148 @@
+
+/* src/styles/responsive.css */
+
+/* Media Queries */
+
+/* Extra Large Screens */
+@media (min-width: 1600px) {
+  .container {
+      max-width: 1500px; /* Increase max-width for very large screens */
+  }
+  .main-content {
+    /* Adjust grid for 2 columns on very large screens */
+    grid-template-columns: minmax(300px, 1fr) minmax(700px, 4fr); 
+    gap: 2.5rem; /* Increase gap */
+  }
+}
+
+/* Large Screens (Desktops) */
+@media (max-width: 1400px) {
+  .main-content {
+    /* Keep the 2-column grid from layout.css */
+    grid-template-columns: minmax(250px, 1fr) minmax(600px, 3fr);
+    gap: 1.5rem;
+  }
+}
+
+/* Laptops y tablets grandes */
+@media (max-width: 1200px) {
+  .main-content {
+    /* Keep 2 columns, adjust sizes */
+    grid-template-columns: minmax(200px, 1fr) minmax(500px, 3fr); 
+  }
+}
+
+/* Tablets */
+@media (max-width: 900px) {
+  .container {
+     padding-left: 1.5rem; /* Adjust container padding for tablets */
+     padding-right: 1.5rem;
+  }
+  .main-content {
+    grid-template-columns: 1fr; /* Una sola columna */
+    padding: 1rem 0; /* Adjust vertical padding, remove horizontal */
+    justify-items: stretch; /* Stretch items to fill the column width */
+    gap: 1.5rem; /* Add gap between items */
+  }
+  
+  .sidebar {
+    display: none; /* Ocultamos el sidebar */
+  }
+  
+  .nav-links {
+    display: none; /* Ocultamos los links del navbar */
+  }
+
+  .mobile-menu-button {
+    display: block; /* Mostramos el botón del menú móvil */
+  }
+
+  .mobile-menu {
+    display: block; /* Permitimos que el JS controle la visibilidad */
+  }
+
+  /* Content blocks take full width */
+  .content, 
+  .main-content > .content-full-width {
+    padding: 1.5rem;
+    width: 100%; /* Take full available width */
+    max-width: 100%; /* Override previous max-width */
+    margin-left: 0; /* Remove auto margin */
+    margin-right: 0; /* Remove auto margin */
+    grid-column: 1 / -1; 
+    box-sizing: border-box; 
+  }
+
+  .card {
+    padding: 1.25rem;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+  }
+}
+
+/* Móviles grandes */
+@media (max-width: 640px) {
+  .container {
+     padding-left: 1rem; /* Reduce padding for larger mobiles */
+     padding-right: 1rem;
+  }
+  .form-row {
+    grid-template-columns: 1fr; /* Una columna para formularios */
+  }
+
+  .filters {
+    grid-template-columns: 1fr; /* Una columna para filtros */
+  }
+
+  .chat-input {
+    flex-direction: column; /* Stack input and button vertically */
+    gap: 0.5rem;
+  }
+  .chat-input .btn {
+    width: 100%; /* Button takes full width */
+  }
+
+  /* Consistent padding for content blocks */
+  .content,
+  .main-content > .content-full-width {
+    padding: 1rem;
+  }
+}
+
+/* Móviles pequeños */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 1rem; /* Consistent padding for small mobiles */
+  }
+
+  .content,
+  .main-content > .content-full-width {
+    padding: 1rem; /* Consistent padding */
+  }
+
+  .card {
+    padding: 1rem;
+  }
+
+  .btn {
+    width: 100%; /* Botones ocupan todo el ancho */
+  }
+
+  .profile-image-container {
+    width: 120px;
+    height: 120px;
+    margin-left: auto; /* Center profile image container */
+    margin-right: auto; /* Center profile image container */
+  }
+
+  .semester-grid {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Adjust grid for smaller buttons */
+    gap: 0.5rem; /* Reduce gap */
+  }
+}

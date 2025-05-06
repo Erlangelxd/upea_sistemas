@@ -1,0 +1,153 @@
+
+/* src/styles/components.css */
+
+/* Botones */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  text-decoration: none; /* Para links estilizados como botones */
+  gap: 0.5rem; /* Espacio entre icono y texto */
+}
+
+.btn-primary {
+  background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
+  color: var(--color-white);
+  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+}
+
+.btn-secondary {
+  background-color: var(--color-gray-700);
+  color: var(--color-gray-100);
+  border: 1px solid var(--color-gray-600);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-gray-600);
+  transform: translateY(-2px);
+}
+
+.btn-sm {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
+
+/* Formularios */
+.form-group {
+  margin-bottom: 1.5rem;
+  transition: transform 0.2s ease-out; /* Añadido para hover */
+}
+
+/* Restaurado hover para form-group si se desea */
+/* .form-group:hover {
+  transform: scale(1.01); 
+} */
+
+
+.form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--color-gray-200);
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--color-gray-600);
+  background-color: var(--color-gray-800);
+  color: var(--color-gray-100);
+  border-radius: 8px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  font-size: 1rem;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+.form-textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* Estilos específicos para <select> para asegurar visibilidad de opciones */
+.form-select option {
+  background-color: var(--color-gray-700); /* Fondo oscuro para opciones */
+  color: var(--color-gray-100); /* Texto claro para opciones */
+}
+
+/* Tarjetas */
+.card {
+  background: var(--glass-background-light);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--glass-border-light);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: var(--glass-shadow-light);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px) scale(1.02); /* Restaurado y ajustado */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada en hover */
+}
+
+.card h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: var(--color-white);
+}
+
+.card p {
+  color: var(--color-gray-300);
+  line-height: 1.6;
+}
+
+/* Mensaje de éxito en Registro */
+.success-message-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 3rem 1rem;
+  background: var(--glass-background-light);
+  border-radius: 16px;
+  border: 1px solid var(--glass-border-light);
+  box-shadow: var(--glass-shadow-light);
+  margin: 2rem auto; /* Centrar y dar espacio */
+  max-width: 500px; /* Limitar ancho */
+}
+
+.success-icon {
+  color: #10b981; /* Verde éxito */
+  margin-bottom: 1.5rem;
+}
+
+.success-message-container h2 {
+  color: var(--color-white);
+  margin-bottom: 0.75rem;
+}
+
+.success-message-container p {
+  color: var(--color-gray-300);
+  margin-bottom: 1.5rem;
+}

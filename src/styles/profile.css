@@ -1,0 +1,126 @@
+
+/* src/styles/profile.css */
+
+/* Shared Profile Styles (Sidebar & Page) */
+.profile-image-container {
+  position: relative;
+  width: 150px; /* Default size */
+  height: 150px; /* Default size */
+  margin: 0 auto 1.5rem; 
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--color-primary);
+  box-shadow: 0 0 20px rgba(37, 99, 235, 0.3);
+}
+
+.profile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  transition: transform 0.3s ease;
+}
+
+.profile-image:hover {
+  transform: scale(1.05); /* Slightly smaller zoom */
+}
+
+.profile-image-upload {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(31, 41, 55, 0.9); 
+  padding: 0.5rem; /* Smaller padding */
+  color: var(--color-white);
+  text-align: center;
+  cursor: pointer;
+  opacity: 0; 
+  transition: opacity 0.3s ease;
+  font-size: 0.875rem; /* Smaller font size */
+}
+
+.profile-image-container:hover .profile-image-upload {
+  opacity: 1; 
+}
+
+/* Sidebar Specific Styles */
+.sidebar .profile-image-container {
+  width: 120px; /* Smaller size for sidebar */
+  height: 120px;
+}
+
+.sidebar .user-detail {
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--color-gray-300);
+}
+.sidebar .user-detail strong {
+  color: var(--color-gray-100);
+}
+
+.sidebar .edit-profile-btn {
+  margin-top: 1rem;
+  width: 100%; /* Full width button in sidebar */
+}
+
+.sidebar .edit-buttons {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.sidebar .edit-buttons .btn {
+  flex: 1; /* Make buttons share space */
+}
+
+/* Profile Page Specific Styles */
+.profile-page-container {
+  /* Uses content-full-width for overall layout */
+}
+
+.profile-page-container h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.profile-card {
+  max-width: 600px; /* Limit width of the card on the page */
+  margin: 0 auto; /* Center the card */
+}
+
+.profile-card .profile-image-container {
+  width: 180px; /* Larger image for the profile page */
+  height: 180px;
+}
+
+.profile-details {
+  text-align: center;
+}
+
+.profile-details .user-detail {
+  margin-bottom: 0.75rem;
+  font-size: 1.1rem;
+  color: var(--color-gray-200);
+}
+.profile-details .user-detail strong {
+  color: var(--color-white);
+}
+
+.profile-details .edit-profile-btn {
+  margin-top: 1.5rem;
+}
+
+.profile-form {
+  margin-top: 1.5rem;
+}
+
+.profile-form .edit-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  justify-content: center; /* Center buttons */
+}
+
+.profile-form .edit-buttons .btn {
+   min-width: 120px; /* Give buttons some minimum width */
+}

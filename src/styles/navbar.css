@@ -1,0 +1,113 @@
+
+/* src/styles/navbar.css */
+
+/* Navegación */
+.navbar {
+  background: rgba(31, 41, 55, 0.95); /* Fondo ligeramente más opaco */
+  backdrop-filter: blur(10px);
+  padding: 0.75rem 0;
+  position: fixed; /* Fijo en la parte superior */
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 9999; /* Asegura que esté por encima de todo */
+  border-bottom: 1px solid var(--glass-border);
+  height: var(--navbar-height);
+  display: flex;
+  align-items: center;
+}
+
+.navbar-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.logo {
+  color: var(--color-white);
+  font-size: 1.75rem;
+  font-weight: 700;
+  text-decoration: none;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 10; /* Para asegurar que esté sobre el menú móvil si se superpone */
+}
+
+.logo:hover {
+  transform: scale(1.05);
+  filter: brightness(1.2);
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.nav-link {
+  color: var(--color-gray-300);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+}
+
+.nav-link:hover {
+  color: var(--color-white);
+  background: var(--glass-background);
+}
+
+/* Menú Móvil */
+.mobile-menu-button {
+  display: none; /* Oculto por defecto */
+  background: var(--glass-background);
+  border: 1px solid var(--glass-border);
+  color: var(--color-white);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  z-index: 10; /* Sobre el menú */
+}
+
+.mobile-menu-button:hover {
+  background: var(--color-gray-700);
+}
+
+.mobile-menu {
+  display: none; /* Oculto y gestionado por JS/React */
+  position: fixed;
+  top: var(--navbar-height); /* Justo debajo del navbar */
+  left: 0;
+  right: 0;
+  background: rgba(31, 41, 55, 0.98); /* Casi opaco */
+  backdrop-filter: blur(10px);
+  padding: 1rem;
+  transform: translateY(-100%); /* Estado inicial oculto arriba */
+  transition: transform 0.3s ease-in-out;
+  border-bottom: 1px solid var(--glass-border);
+  z-index: 9998; /* Debajo del navbar pero sobre el contenido */
+}
+
+.mobile-menu.active {
+  transform: translateY(0); /* Estado activo visible */
+}
+
+.mobile-menu .nav-link {
+  display: block;
+  padding: 1rem;
+  text-align: center;
+  border-bottom: 1px solid var(--glass-border);
+  font-size: 1.1rem;
+}
+
+.mobile-menu .nav-link:last-child {
+  border-bottom: none;
+}
