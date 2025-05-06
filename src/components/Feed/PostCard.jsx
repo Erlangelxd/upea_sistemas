@@ -1,7 +1,6 @@
-
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Book, Calendar, Download } from 'lucide-react';
+import React from "react";
+import { motion } from "framer-motion";
+import { Book, Calendar, Download } from "lucide-react";
 
 function PostCard({ post, index }) {
   const handleDownload = () => {
