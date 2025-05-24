@@ -1,9 +1,8 @@
-
-import React, { useState, useEffect } from 'react';
-import { useToast } from '@/components/ui/use-toast';
-import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
-import { CheckCircle } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import { useToast } from "@/components/ui/use-toast";
+import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+import { CheckCircle } from "lucide-react";
 
 function Register({ isAuthenticated, onRegisterSuccess }) {
   const { toast } = useToast();
@@ -11,13 +10,13 @@ function Register({ isAuthenticated, onRegisterSuccess }) {
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
   const [formData, setFormData] = useState({
-    nombre: '',
-    edad: '',
-    correo: '',
-    carrera: '',
-    semestre: '',
+    nombre: "",
+    edad: "",
+    correo: "",
+    carrera: "",
+    semestre: "",
     foto: null,
-    fotoPreview: null
+    fotoPreview: null,
   });
 
   useEffect(() => {
@@ -25,39 +24,38 @@ function Register({ isAuthenticated, onRegisterSuccess }) {
       toast({
         title: "Ya estás registrado",
         description: "Redirigiendo a la página de inicio.",
-        variant: "info"
+        variant: "info",
       });
-      navigate('/');
+      navigate("/");
     }
   }, [isAuthenticated, navigate, toast]);
-
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Datos de registro:", formData);
-    setShowSuccessMessage(true); 
+    setShowSuccessMessage(true);
   };
 
   const handleNavigateHome = () => {
-    if(onRegisterSuccess) onRegisterSuccess(); 
-    navigate('/'); 
+    if (onRegisterSuccess) onRegisterSuccess();
+    navigate("/");
   };
 
   const handleChange = (e) => {
     const { name, value, type, files } = e.target;
-    if (type === 'file') {
+    if (type === "file") {
       const file = files[0];
       if (file) {
-        setFormData(prev => ({
+        setFormData((prev) => ({
           ...prev,
-          foto: file
+          foto: file,
         }));
         handleImagePreview(file);
       }
     } else {
-      setFormData(prev => ({
+      setFormData((prev) => ({
         ...prev,
-        [name]: value
+        [name]: value,
       }));
     }
   };
@@ -65,27 +63,27 @@ function Register({ isAuthenticated, onRegisterSuccess }) {
   const handleImagePreview = (file) => {
     const reader = new FileReader();
     reader.onloadend = () => {
-      setFormData(prev => ({
+      setFormData((prev) => ({
         ...prev,
-        fotoPreview: reader.result
+        fotoPreview: reader.result,
       }));
     };
     reader.readAsDataURL(file);
   };
 
   if (isAuthenticated) {
-    return null; 
+    return null;
   }
 
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, y: 20 }} /* Restaurado y: 20 */
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="register-container" 
+      className="register-container"
     >
       {showSuccessMessage ? (
-        <motion.div 
+        <motion.div
           className="success-message-container"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -94,11 +92,11 @@ function Register({ isAuthenticated, onRegisterSuccess }) {
           <CheckCircle size={64} className="success-icon" />
           <h2>¡Registro Exitoso!</h2>
           <p>Tu cuenta ha sido creada correctamente.</p>
-          <motion.button 
+          <motion.button
             onClick={handleNavigateHome}
             className="btn btn-primary"
             whileTap={{ scale: 0.95 }}
-            style={{marginTop: '1.5rem'}}
+            style={{ marginTop: "1.5rem" }}
           >
             Ir al Inicio
           </motion.button>
@@ -107,28 +105,26 @@ function Register({ isAuthenticated, onRegisterSuccess }) {
         <>
           <h2>Registro de Usuario</h2>
           <form onSubmit={handleSubmit}>
-            <motion.div 
+            <motion.div
               className="profile-image-container"
               whileHover={{ scale: 1.05 }} /* Añadido hover */
             >
               {formData.fotoPreview ? (
-                <img src={formData.fotoPreview} alt="Preview" className="profile-image" />
-              ) : (
-                 <img  alt="Default profile" className="profile-image" src="https://images.unsplash.com/photo-1595872018818-97555653a011" />
-              )}
-              <label className="profile-image-upload">
-                <input
-                  type="file"
-                  name="foto"
-                  onChange={handleChange}
-                  accept="image/*"
-                  style={{ display: 'none' }}
+                <img
+                  src={formData.fotoPreview}
+                  alt="Preview"
+                  className="profile-image"
                 />
-                Cambiar foto
-              </label>
+              ) : (
+                <img
+                  alt="Default profile"
+                  className="profile-image"
+                  src="https://w7.pngwing.com/pngs/128/223/png-transparent-user-person-profile-instagram-ui-colored-icon.png"
+                />
+              )}
             </motion.div>
 
-            <motion.div className="form-group" whileHover={{ scale: 1.01 }}>
+            <motion.div className="form-group">
               <label className="form-label">Nombre</label>
               <input
                 type="text"
@@ -139,8 +135,8 @@ function Register({ isAuthenticated, onRegisterSuccess }) {
                 required
               />
             </motion.div>
-            
-            <motion.div className="form-group" whileHover={{ scale: 1.01 }}>
+
+            <motion.div className="form-group">
               <label className="form-label">Edad</label>
               <input
                 type="number"
@@ -151,8 +147,8 @@ function Register({ isAuthenticated, onRegisterSuccess }) {
                 required
               />
             </motion.div>
-            
-            <motion.div className="form-group" whileHover={{ scale: 1.01 }}>
+
+            <motion.div className="form-group">
               <label className="form-label">Correo</label>
               <input
                 type="email"
@@ -163,8 +159,8 @@ function Register({ isAuthenticated, onRegisterSuccess }) {
                 required
               />
             </motion.div>
-            
-            <motion.div className="form-group" whileHover={{ scale: 1.01 }}>
+
+            <motion.div className="form-group">
               <label className="form-label">Carrera</label>
               <input
                 type="text"
@@ -175,8 +171,8 @@ function Register({ isAuthenticated, onRegisterSuccess }) {
                 required
               />
             </motion.div>
-            
-            <motion.div className="form-group" whileHover={{ scale: 1.01 }}>
+
+            <motion.div className="form-group">
               <label className="form-label">Semestre</label>
               <input
                 type="number"
@@ -185,16 +181,15 @@ function Register({ isAuthenticated, onRegisterSuccess }) {
                 value={formData.semestre}
                 onChange={handleChange}
                 min="1"
-                max="12" 
+                max="12"
                 required
               />
             </motion.div>
-            
-            <motion.button 
-              type="submit" 
+
+            <motion.button
+              type="submit"
               className="btn btn-primary"
               whileTap={{ scale: 0.95 }}
-              whileHover={{ scale: 1.05 }} /* Añadido hover */
             >
               Registrarse
             </motion.button>

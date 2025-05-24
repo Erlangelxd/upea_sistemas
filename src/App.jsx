@@ -18,7 +18,8 @@ function App() {
     name: "Estudiante Ejemplo",
     career: "Ing. en Sistemas",
     semester: 5,
-    avatarUrl: "https://images.unsplash.com/photo-1652841190565-b96e0acbae17",
+    avatarUrl:
+      "https://w7.pngwing.com/pngs/128/223/png-transparent-user-person-profile-instagram-ui-colored-icon.png",
   });
 
   const toggleMobileMenu = () => {
@@ -34,15 +35,10 @@ function App() {
   return (
     <Router>
       <div>
-        <motion.nav
-          className="navbar"
-          initial={{ y: -100 }}
-          animate={{ y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
+        <motion.nav className="navbar" initial={{ y: -100 }} animate={{ y: 0 }}>
           <div className="container navbar-content">
             <Link to="/" className="logo">
-              UPEA SISTEMAS
+              IngeniaRed
             </Link>
             <div className="nav-links">
               <Link to="/" className="nav-link">
@@ -50,9 +46,6 @@ function App() {
               </Link>
               <Link to="/events" className="nav-link">
                 Eventos
-              </Link>
-              <Link to="/chat" className="nav-link">
-                Chat
               </Link>
               <Link to="/announcements" className="nav-link">
                 Anuncios

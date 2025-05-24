@@ -1,31 +1,31 @@
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { Edit3, Save, XCircle } from "lucide-react";
+import { useToast } from "@/components/ui/use-toast";
 
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Edit3, Save, XCircle } from 'lucide-react';
-import { useToast } from '@/components/ui/use-toast';
-
-function UserProfile({ user, onUpdateUser }) {
+function UserProfileSidebar({ user, onUpdateUser }) {
   const [isEditing, setIsEditing] = useState(false);
   const [editableUser, setEditableUser] = useState({ ...user });
   const { toast } = useToast();
 
   const handleEditToggle = () => {
     if (isEditing) {
-      setEditableUser({ ...user }); // Reset on cancel
+      // Reset changes if canceling
+      setEditableUser({ ...user });
     }
     setIsEditing(!isEditing);
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setEditableUser(prev => ({
+    setEditableUser((prev) => ({
       ...prev,
-      [name]: name === 'semester' ? parseInt(value) || '' : value
+      [name]: name === "semester" ? parseInt(value) || "" : value, // Ensure semester is number
     }));
   };
 
   const handleSave = () => {
-    onUpdateUser(editableUser);
+    onUpdateUser(editableUser); // Pass updated data to parent
     setIsEditing(false);
     toast({
       title: "Perfil Actualizado",
@@ -33,51 +33,20 @@ function UserProfile({ user, onUpdateUser }) {
     });
   };
 
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setEditableUser(prev => ({ ...prev, avatarUrl: reader.result }));
-        onUpdateUser({ avatarUrl: reader.result }); 
-         toast({
-           title: "Imagen Actualizada (Simulado)",
-           description: "La nueva imagen se muestra, pero no se ha subido permanentemente.",
-         });
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-
   return (
-    <motion.div 
-      initial={{ opacity: 0 }} 
-      animate={{ opacity: 1 }} 
-      transition={{ duration: 0.3 }}
-      className="profile-page-container" // Use a specific class for page layout
-    >
-      <h2>Mi Perfil</h2>
-      <div className="card profile-card">
+    <aside className="sidebar">
+      <h3>Perfil</h3>
+      <div className="card">
         <div className="profile-image-container">
-          <img alt="Profile avatar" className="profile-image" src={editableUser.avatarUrl} />
-          {isEditing && (
-             <label htmlFor="profile-page-upload" className="profile-image-upload cursor-pointer">
-               Cambiar foto
-             </label>
-          )}
-          <input 
-            id="profile-page-upload" 
-            type="file" 
-            className="hidden" 
-            accept="image/*" 
-            onChange={handleImageChange}
-            disabled={!isEditing}
-            style={{ display: 'none' }}
+          <img
+            alt="Profile avatar"
+            className="profile-image"
+            src="https://w7.pngwing.com/pngs/128/223/png-transparent-user-person-profile-instagram-ui-colored-icon.png"
           />
         </div>
 
         {isEditing ? (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="profile-form">
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
             <div className="form-group">
               <label className="form-label">Nombre</label>
               <input
@@ -111,29 +80,35 @@ function UserProfile({ user, onUpdateUser }) {
               />
             </div>
             <div className="edit-buttons">
-              <motion.button 
-                onClick={handleSave} 
+              <motion.button
+                onClick={handleSave}
                 className="btn btn-primary btn-sm"
                 whileTap={{ scale: 0.95 }}
               >
                 <Save size={16} /> Guardar
               </motion.button>
-              <motion.button 
-                onClick={handleEditToggle} 
+              <motion.button
+                onClick={handleEditToggle}
                 className="btn btn-secondary btn-sm"
                 whileTap={{ scale: 0.95 }}
               >
-                 <XCircle size={16} /> Cancelar
+                <XCircle size={16} /> Cancelar
               </motion.button>
             </div>
           </motion.div>
         ) : (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="profile-details">
-            <p className="user-detail"><strong>Nombre:</strong> {user.name}</p>
-            <p className="user-detail"><strong>Carrera:</strong> {user.career}</p>
-            <p className="user-detail"><strong>Semestre:</strong> {user.semester}</p>
-            <motion.button 
-              onClick={handleEditToggle} 
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+            <p className="user-detail">
+              <strong>Nombre:</strong> {user.name}
+            </p>
+            <p className="user-detail">
+              <strong>Carrera:</strong> {user.career}
+            </p>
+            <p className="user-detail">
+              <strong>Semestre:</strong> {user.semester}
+            </p>
+            <motion.button
+              onClick={handleEditToggle}
               className="btn btn-primary btn-sm edit-profile-btn"
               whileTap={{ scale: 0.95 }}
             >
@@ -142,8 +117,8 @@ function UserProfile({ user, onUpdateUser }) {
           </motion.div>
         )}
       </div>
-    </motion.div>
+    </aside>
   );
 }
 
-export default UserProfile;
+export default UserProfileSidebar;
