@@ -49,7 +49,7 @@ function SearchFilter({
             value={filterSubject}
             onChange={(e) => setFilterSubject(e.target.value)}
           >
-            <option value="">Todas las materias</option>
+            <option value="">Todas las materiassss</option>
             {subjects.map(subject => (
               <option key={subject} value={subject}>{subject}</option>
             ))}

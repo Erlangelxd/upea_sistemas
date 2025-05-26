@@ -6,9 +6,14 @@ import PostsSection from '@/components/Feed/PostsSection'; // Import the new com
 
 function Feed({ isAuthenticated, user, onUpdateUser }) { 
   
+
+  
   // Available subjects and semesters for filters/upload (can be fetched or static)
-  const subjects = ["Cálculo I", "Cálculo II", "Programación I", "Bases de Datos", "Estructuras de Datos"];
+  const subjects = [];
   const semesters = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+  
+
 
   return (
     <>

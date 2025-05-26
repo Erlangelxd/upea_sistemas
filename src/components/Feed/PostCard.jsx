@@ -38,7 +38,7 @@ function PostCard({ post, index }) {
 
       <button onClick={handleDownload} className="btn btn-secondary">
         <Download size={18} />
-        Descargar
+        Descargarrrrr
       </button>
     </motion.div>
   );

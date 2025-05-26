@@ -2,14 +2,12 @@
 /* src/index.css */
 /* Importa todos los módulos de estilos */
 
-@import url('./styles/base.css');
-@import url('./styles/layout.css');
-@import url('./styles/navbar.css');
-@import url('./styles/components.css');
-@import url('./styles/profile.css');
-@import url('./styles/chat.css');
-@import url('./styles/feed.css');
-@import url('./styles/faq.css'); /* Added FAQ styles */
-@import url('./styles/typography.css');
-@import url('./styles/animations.css');
-@import url('./styles/responsive.css');
+@import url('../public/styles/base.css');
+@import url('../public/styles/typography.css');
+@import url('../public/styles/responsive.css');
+@import url('../public/styles/animations.css');
+@import url('../public/styles/navbar.css');
+@import url('../public/styles/components.css');
+@import url('../public/styles/faq.css');
+@import url('../public/styles/feed.css');
+@import url('../public/styles/profile.css');

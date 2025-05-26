@@ -1,8 +1,9 @@
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Upload } from 'lucide-react';
 import { useToast } from '@/components/ui/use-toast';
+import { use } from 'react';
 
 function UploadForm({ subjects, semesters, onSubmit }) {
   const { toast } = useToast();
@@ -11,6 +12,12 @@ function UploadForm({ subjects, semesters, onSubmit }) {
   const [selectedSemester, setSelectedSemester] = useState('');
   const [file, setFile] = useState(null);
 
+  useEffect(() => {
+    console.log(subjects, semesters);
+    setSelectedSubject(subjects[0]);
+    setSelectedSemester(semesters[0]);
+  }, [subjects, semesters]);
+  
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
     if (selectedFile) {

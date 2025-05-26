@@ -16,6 +16,27 @@ function PostsSection({ isAuthenticated, user, subjects, semesters }) {
   const [posts, setPosts] = useState(mockPosts);
   const [filteredPosts, setFilteredPosts] = useState(mockPosts);
 
+React.useEffect(() => {
+    const fetchPosts = async () => {
+      setLoading(true);
+      try {
+        const response = await fetch('http://localhost:8000/materias/obtener');
+        const data = await response.json();
+        setPosts(data);
+
+        data.materias.map((materia) => subjects.push(materia.name));
+        
+        console.log(subjects);
+      } catch (error) {
+
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchPosts();
+  }, []);
+
   const handleUpload = (newPostData) => {
     const newPost = { 
       id: Date.now(), 
