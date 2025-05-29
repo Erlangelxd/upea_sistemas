@@ -65,7 +65,7 @@ window.onerror = (message, source, lineno, colno, errorObj) => {
 const configHorizonsConsoleErrroHandler = `
 const originalConsoleError = console.error;
 console.error = function(...args) {
-	originalConsoleError.apply(console, args);
+	//originalConsoleError.apply(console, args)
 
 	const errorString = args.map(arg => typeof arg === 'object' ? JSON.stringify(arg) : String(arg)).join(' ').toLowerCase();
 

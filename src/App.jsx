@@ -4,6 +4,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { motion } from "framer-motion";
 
 import Navbar from "./components/Feed/NavBar";
+
 import Feed from "./pages/Feed";
 import Register from "./pages/Register";
 import UserProfile from "./pages/UserProfile";
@@ -11,6 +12,8 @@ import Events from "./pages/Events";
 import Chat from "./pages/Chat";
 import Announcements from "./pages/Announcements";
 import FAQ from "./pages/FAQ";
+
+import Home from "./pages/Home";
 
 function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -27,7 +30,7 @@ function App() {
   const toggleAuth = () => setIsAuthenticated(!isAuthenticated);
   const handleUpdateUser = (updatedData) =>
     setCurrentUser((prev) => ({ ...prev, ...updatedData }));
-
+  
   return (
     <Router>
       <div>
@@ -50,7 +53,7 @@ function App() {
             <Route
               path="/"
               element={
-                <Feed
+                <Home
                   isAuthenticated={isAuthenticated}
                   user={currentUser}
                   onUpdateUser={handleUpdateUser}

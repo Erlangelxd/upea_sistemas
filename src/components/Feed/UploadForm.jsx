@@ -12,13 +12,13 @@ function UploadForm({ subjects, semesters, onSubmit }) {
   const [selectedSemester, setSelectedSemester] = useState('');
   const [file, setFile] = useState(null);
 
-  useEffect(() => {
-    console.log(subjects, semesters);
-    setSelectedSubject(subjects[0]);
-    setSelectedSemester(semesters[0]);
-  }, [subjects, semesters]);
+  // useEffect(() => {
+  //   console.log(subjects, semesters);
+  //   setSelectedSubject(subjects[0]);
+  //   setSelectedSemester(semesters[0]);
+  // }, [subjects, semesters]);
   
-  const handleFileChange = (e) => {
+    const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
     if (selectedFile) {
       if (selectedFile.size > 10 * 1024 * 1024) { // 10MB limit
@@ -55,6 +55,8 @@ function UploadForm({ subjects, semesters, onSubmit }) {
     const fileInput = document.getElementById('file');
     if(fileInput) fileInput.value = '';
   };
+
+
 
   return (
     <motion.div

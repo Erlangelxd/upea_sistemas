@@ -13,6 +13,10 @@ function SearchFilter({
   semesters, 
   subjects 
 }) {
+
+
+  
+  
   return (
     <motion.div
       className="card search-card"
@@ -40,7 +44,7 @@ function SearchFilter({
           >
             <option value="">Todos los semestres</option>
             {semesters.map(sem => (
-              <option key={sem} value={sem}>Semestre {sem}</option>
+              <option key={sem} value={sem}> {sem}</option>
             ))}
           </select>
 
@@ -49,7 +53,7 @@ function SearchFilter({
             value={filterSubject}
             onChange={(e) => setFilterSubject(e.target.value)}
           >
-            <option value="">Todas las materiassss</option>
+            <option value="">Todas las materias</option>
             {subjects.map(subject => (
               <option key={subject} value={subject}>{subject}</option>
             ))}
