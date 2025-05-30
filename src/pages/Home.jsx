@@ -39,6 +39,7 @@ function Home({ isAuthenticated, user, onUpdateUser }) {
       .then((data) => setSemesters(data.map((d) => d.nombre)))
       .catch((error) => console.error(error.message));
   }, []);
+  console.log("semestres", semesters);
 
   // Filtrado dinámico antes de renderizar
   const filteredData = datos.filter((d) => {

@@ -41,3 +41,13 @@ export async function getAnuncios() {
   return await response.json();
   
 }
+
+export async function getFaqs() {
+  const response = await fetch(`${API_URL}/preguntas_frecuentes/obtener`);
+
+  if (!response.ok) {
+    throw new Error("Error al obtener las preguntas frecuentes");
+  }
+
+  return await response.json(); 
+}

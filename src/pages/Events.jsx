@@ -17,7 +17,7 @@ function Events() {
 
     fetchEventos();
   }, []);
-  // console.log(events);
+  //console.log(events);
 
   return (
     <motion.div
