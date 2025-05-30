@@ -70,12 +70,12 @@ function Events() {
 
             <p className="event-description">{event.descripcion}</p>
 
-            <motion.button
+            {/* <motion.button
               className="btn btn-primary"
               whileTap={{ scale: 0.95 }}
             >
               Registrarse
-            </motion.button>
+            </motion.button> */}
           </motion.div>
         ))}
       </div>

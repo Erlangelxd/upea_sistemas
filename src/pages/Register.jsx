@@ -103,7 +103,7 @@ function Register({ isAuthenticated, onRegisterSuccess }) {
         </motion.div>
       ) : (
         <>
-          <h2>Registro de Usuario</h2>
+          <h2>Inicio de Sesion</h2>
           <form onSubmit={handleSubmit}>
             <motion.div
               className="profile-image-container"
@@ -137,7 +137,7 @@ function Register({ isAuthenticated, onRegisterSuccess }) {
             </motion.div>
 
             <motion.div className="form-group">
-              <label className="form-label">Edad</label>
+              <label className="form-label">---</label>
               <input
                 type="number"
                 name="edad"
@@ -191,7 +191,7 @@ function Register({ isAuthenticated, onRegisterSuccess }) {
               className="btn btn-primary"
               whileTap={{ scale: 0.95 }}
             >
-              Registrarse
+              Iniciar Sesion
             </motion.button>
           </form>
         </>
