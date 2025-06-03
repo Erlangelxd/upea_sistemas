@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 import Navbar from "./components/Feed/NavBar";
 
-import Feed from "./pages/Feed";
+//import Feed from "./pages/Feed";
 import Register from "./pages/Register";
 import UserProfile from "./pages/UserProfile";
 import Events from "./pages/Events";

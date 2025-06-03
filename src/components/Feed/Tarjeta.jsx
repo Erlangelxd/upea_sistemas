@@ -3,11 +3,11 @@ import { motion } from "framer-motion";
 import { Book, Calendar, Download } from "lucide-react";
 
 function Card({ id_semestre, nombre_materia, nombre_semestre, descripcion_materia }) {
-  const handleDownload = () => {
-    // Placeholder for download logic
-    console.log(`Downloading post ${id_semestre}`);
-    // In a real app, trigger file download here
-  };
+  // const handleDownload = () => {
+  //   // Placeholder for download logic
+  //   console.log(`Downloading post ${id_semestre}`);
+  //   // In a real app, trigger file download here
+  // };
 
   return (
     <motion.div
@@ -35,10 +35,12 @@ function Card({ id_semestre, nombre_materia, nombre_semestre, descripcion_materi
         </div>
       </div>
 
-      <button onClick={handleDownload} className="btn btn-secondary">
+      {/* <button onClick={handleDownload} className="btn btn-secondary">
         <Download size={18} />
-        Descargar
-      </button>
+        
+      </button> */}
+      
+      <a href="algo.pdf" download   className="btn btn-secondary" >Descargar</a>
     </motion.div>
   );
 }

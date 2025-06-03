@@ -1,6 +1,7 @@
 
-import React, { useState } from 'react';
-import UploadForm from '@/components/Feed/UploadForm';
+import React, { useState, useEffect } from 'react';
+// import UploadForm from '@/components/Feed/UploadForm';
+import UploadForm from '@/components/Feed/Subirarchivo';
 import SearchFilter from '@/components/Feed/SearchFilter';
 import PostCard from '@/components/Feed/PostCard';
 
@@ -16,7 +17,7 @@ function PostsSection({ isAuthenticated, user, subjects, semesters }) {
   const [posts, setPosts] = useState(mockPosts);
   const [filteredPosts, setFilteredPosts] = useState(mockPosts);
 
-React.useEffect(() => {
+useEffect(() => {
     const fetchPosts = async () => {
       setLoading(true);
       try {

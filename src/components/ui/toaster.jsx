@@ -11,6 +11,7 @@ import React from 'react';
 
 export function Toaster() {
 	const { toasts } = useToast();
+    //console.log("TOASTS", toasts)
 
 	return (
 		<ToastProvider>

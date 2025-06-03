@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Upload } from 'lucide-react';
 import { useToast } from '@/components/ui/use-toast';
-import { use } from 'react';
+
 
 function UploadForm({ subjects, semesters, onSubmit }) {
   const { toast } = useToast();
@@ -104,7 +104,7 @@ function UploadForm({ subjects, semesters, onSubmit }) {
             >
               <option value="" disabled>Selecciona el semestre</option>
               {semesters.map(sem => (
-                <option key={sem} value={sem}>Semestre {sem}</option>
+                <option key={sem} value={sem}> {sem}</option>
               ))}
             </select>
           </div>
@@ -125,7 +125,7 @@ function UploadForm({ subjects, semesters, onSubmit }) {
           </label>
         </div>
 
-        <button type="submit" className="btn btn-primary">Publicar</button>
+        <button type="submit" className="btn btn-primary" >Publicar</button>
       </form>
     </motion.div>
   );
