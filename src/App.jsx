@@ -7,9 +7,9 @@ import Navbar from "./components/Feed/NavBar";
 
 //import Feed from "./pages/Feed";
 import Register from "./pages/Register";
-import Register_admin from "./pages/Register_admin";
 import UserProfile from "./pages/UserProfile";
 import Events from "./pages/Events";
+import Chat from "./pages/Chat";
 import Announcements from "./pages/Announcements";
 import FAQ from "./pages/FAQ";
 

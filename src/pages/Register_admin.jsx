@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { CheckCircle } from "lucide-react";
 
-function Register({ isAuthenticated, onRegisterSuccess }) {
+function Register_admin({ isAuthenticated, onRegisterSuccess }) {
   const { toast } = useToast();
   const navigate = useNavigate();
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
@@ -129,4 +129,4 @@ function Register({ isAuthenticated, onRegisterSuccess }) {
   );
 }
 
-export default Register;
+export default Register_admin;
