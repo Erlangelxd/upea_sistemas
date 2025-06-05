@@ -12,7 +12,6 @@ import Events from "./pages/Events";
 import Announcements from "./pages/Announcements";
 import FAQ from "./pages/FAQ";
 import Home from "./pages/Home";
-import Chat from "./pages/Chat"; // Asegúrate de que este archivo exista
 
 function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -20,7 +19,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState({
     name: "Estudiante Ejemplo",
     career: "Ing. en Sistemas",
-    semester: 5,
+    semester: 4,
     avatarUrl:
       "https://w7.pngwing.com/pngs/128/223/png-transparent-user-person-profile-instagram-ui-colored-icon.png",
   });
