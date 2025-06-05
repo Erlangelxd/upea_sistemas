@@ -1,81 +1,57 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Upload } from "lucide-react";
 import SearchFilter from "../components/Feed/SearchFilter";
 import { getMaterias, getSemestres } from "../services/services_generales";
 import Card from "../components/Feed/Tarjeta";
-// import UploadForm from "../components/Feed/UploadForm";
 import UploadForm from "../components/Feed/Subirarchivo";
 import handleUpload from "../components/Feed/PostsSection";
-import UserProfileSidebar from '@/components/Feed/UserProfileSidebar'; 
+import UserProfileSidebar from "@/components/Feed/UserProfileSidebar";
 
 function Home({ isAuthenticated, user, onUpdateUser }) {
-  const [content, setContent] = useState("");
-  const [selectedSubject, setSelectedSubject] = useState("");
-  const [selectedSemester, setSelectedSemester] = useState("");
-  const [file, setFile] = useState(null);
-  const [filterSemester, setFilterSemester] = useState(null);
-
-  const [searchTerm, setSearchTerm] = useState("");
-  const [filterSubject, setFilterSubject] = useState("");
-
-  const [subjects, setSubjects] = useState([]);
-  const [semesters, setSemesters] = useState([]);
   const [datos, setData] = useState([]);
-  //console.log("datosdddddd", datos);
+  const [semesters, setSemesters] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filterSemester, setFilterSemester] = useState(null);
+  const [filterSubject, setFilterSubject] = useState("");
 
   useEffect(() => {
     getMaterias()
       .then((data) => setData(data))
-      .catch((error) => console.error(error.message));
-  }, []);
+      .catch((error) => console.error("Error al obtener materias:", error));
 
-  useEffect(() => {
-    getMaterias()
-      .then((data) => setSubjects(data.map((d) => d.nombre)))
-      .catch((error) => console.error(error.message));
-  }, []);
-
-  useEffect(() => {
     getSemestres()
       .then((data) => setSemesters(data.map((d) => d.nombre)))
-      .catch((error) => console.error(error.message));
+      .catch((error) => console.error("Error al obtener semestres:", error));
   }, []);
-  //console.log("semestres", semesters);
+
+  useEffect(() => {
+    setFilterSubject(""); // Resetear materia al cambiar semestre
+  }, [filterSemester]);
+
+  const subjects = [...new Set(datos.map((d) => d.nombre))];
+
+  const filteredSubjects = filterSemester
+    ? [...new Set(datos.filter((d) => d.semestre === filterSemester).map((d) => d.nombre))]
+    : subjects;
 
   const filteredData = datos.filter((d) => {
     const matchesSemester = !filterSemester || d.semestre === filterSemester;
     const matchesSubject = !filterSubject || d.nombre === filterSubject;
-    const matchesSearch =
-      !searchTerm || d.nombre.toLowerCase().includes(searchTerm.toLowerCase());
-
+    const matchesSearch = !searchTerm || d.nombre.toLowerCase().includes(searchTerm.toLowerCase());
     return matchesSemester && matchesSubject && matchesSearch;
   });
-
-  const filteredSubjects = filterSemester
-    ? datos
-        .filter((d) => d.semestre === filterSemester)
-        .map((d) => d.nombre)
-        .filter((value, index, self) => self.indexOf(value) === index) // elimina duplicados
-    : subjects;
-  useEffect(() => {
-    setFilterSubject(""); // limpia la materia si cambia el semestre
-  }, [filterSemester]);
-  //console.log("Autenticado:", isAuthenticated, "Usuario:", user);
 
   return (
     <>
       {isAuthenticated && (
         <UserProfileSidebar user={user} onUpdateUser={onUpdateUser} />
       )}
-      <div
-        className={`content ${!isAuthenticated ? "content-centered-feed" : ""}`}
-      >
+
+      <div className={`content ${!isAuthenticated ? "content-centered-feed" : ""}`}>
         <motion.div
-          //className="card upload-card"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.3 }}
         >
           {isAuthenticated && (
             <UploadForm
@@ -96,14 +72,7 @@ function Home({ isAuthenticated, user, onUpdateUser }) {
             subjects={filteredSubjects}
           />
 
-          {/* <SearchFilter
-        subjects={subjects}
-        semesters={semesters}
-        setSelectedSubject={setSelectedSubject}
-        setSelectedSemester={setSelectedSemester}
-        setFilterSemester={setFilterSemester}
-      /> */}
-          {filteredData && filteredData.length ? (
+          {filteredData.length > 0 ? (
             filteredData.map((d, i) => (
               <Card
                 key={i}
@@ -116,19 +85,6 @@ function Home({ isAuthenticated, user, onUpdateUser }) {
           ) : (
             <p>No hay datos</p>
           )}
-
-          {/* {datos && datos.length ? (
-        datos.map((d) => (
-          <Card
-            id_semestre={d.semestre_id}
-            nombre_materia={d.nombre}
-            nombre_semestre={d.semestre}
-            
-          />
-        ))
-      ) : (
-        <p>No hay datos</p>
-      )} */}
         </motion.div>
       </div>
     </>

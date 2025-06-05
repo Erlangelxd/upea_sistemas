@@ -5,19 +5,29 @@ import { getEventos } from "../services/services_generales";
 
 function Events() {
   const [events, setEvents] = useState([]);
+
   useEffect(() => {
     const fetchEventos = async () => {
       try {
         const data = await getEventos();
-        setEvents(data);
+        setEvents(data || []);
       } catch (error) {
         console.error("Error al obtener eventos:", error);
       }
     };
-
     fetchEventos();
   }, []);
-  //console.log(events);
+
+  const formatearFecha = (fecha) =>
+    fecha
+      ? new Date(fecha).toLocaleDateString("es-ES", {
+          day: "numeric",
+          month: "long",
+          year: "numeric",
+        })
+      : "Fecha no disponible";
+
+  const formatearHora = (hora) => (hora ? hora.substring(0, 5) : "--:--");
 
   return (
     <motion.div
@@ -26,59 +36,48 @@ function Events() {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.3 }}
     >
-      <h2>Eventos de la Carrera</h2>
+      <h2 className="text-2xl font-semibold mb-4">Eventos de la Carrera</h2>
 
-      <div className="events-grid">
-        {events.map((event, index) => (
-          <motion.div
-            key={event.id_eventos}
-            className="card"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-          >
-            <p>Nro de Evento: {event.id_eventos}</p>
-            <h3>{event.titulo}</h3>  
+      {events.length === 0 ? (
+        <p>No hay eventos disponibles en este momento.</p>
+      ) : (
+        <div className="events-grid">
+          {events.map((event) => (
+            <motion.div
+              key={event.id_eventos}
+              className="card"
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.2 }}
+            >
+              <h3 className="text-lg font-bold mb-2">{event.titulo}</h3>
 
-            <div className="event-details">
-              <div className="event-info">
-                <Calendar className="icon" size={20} />
-                <div>
-                  <p>
-                    {new Date(event.fecha_evento).toLocaleDateString("es-ES", {
-                      day: "numeric",
-                      month: "long",
-                      year: "numeric",
-                    })}
-                  </p>
-                  <p>
-                    {event.hora_inicio.substring(0, 5)} - {event.hora_fin.substring(0, 5)}
-                  </p>
+              <div className="event-details space-y-2">
+                <div className="event-info flex items-center gap-2">
+                  <Calendar size={20} />
+                  <div>
+                    <p>{formatearFecha(event.fecha_evento)}</p>
+                    <p className="text-sm text-gray-500">
+                      {formatearHora(event.hora_inicio)} - {formatearHora(event.hora_fin)}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="event-info flex items-center gap-2">
+                  <MapPin size={20} />
+                  <p>{event.lugar}</p>
+                </div>
+
+                <div className="event-info flex items-center gap-2">
+                  <Users size={20} />
+                  <p>Capacidad: {event.capacidad}</p>
                 </div>
               </div>
 
-              <div className="event-info">
-                <MapPin className="icon" size={20} />
-                <p>{event.lugar}</p>
-              </div>
-
-              <div className="event-info">
-                <Users className="icon" size={20} />
-                <p>{event.capacidad}</p>
-              </div>
-            </div>
-
-            <p className="event-description">{event.descripcion}</p>
-
-            {/* <motion.button
-              className="btn btn-primary"
-              whileTap={{ scale: 0.95 }}
-            >
-              Registrarse
-            </motion.button> */}
-          </motion.div>
-        ))}
-      </div>
+              <p className="event-description mt-2 text-sm text-gray-700">{event.descripcion}</p>
+            </motion.div>
+          ))}
+        </div>
+      )}
     </motion.div>
   );
 }

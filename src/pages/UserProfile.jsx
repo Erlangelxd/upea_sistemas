@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { motion } from "framer-motion";
 import { Edit3, Save, XCircle } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 
@@ -9,23 +8,22 @@ function UserProfileSidebar({ user, onUpdateUser }) {
   const { toast } = useToast();
 
   const handleEditToggle = () => {
-    if (isEditing) {
-      // Reset changes if canceling
-      setEditableUser({ ...user });
-    }
-    setIsEditing(!isEditing);
+    setIsEditing((prev) => {
+      if (prev) setEditableUser({ ...user }); // reset if canceling
+      return !prev;
+    });
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setEditableUser((prev) => ({
       ...prev,
-      [name]: name === "semester" ? parseInt(value) || "" : value, // Ensure semester is number
+      [name]: name === "semester" ? parseInt(value) || "" : value,
     }));
   };
 
   const handleSave = () => {
-    onUpdateUser(editableUser); // Pass updated data to parent
+    onUpdateUser(editableUser);
     setIsEditing(false);
     toast({
       title: "Perfil Actualizado",
@@ -39,83 +37,76 @@ function UserProfileSidebar({ user, onUpdateUser }) {
       <div className="card">
         <div className="profile-image-container">
           <img
-            alt="Profile avatar"
+            alt="Avatar"
             className="profile-image"
             src="https://w7.pngwing.com/pngs/128/223/png-transparent-user-person-profile-instagram-ui-colored-icon.png"
           />
         </div>
 
-        {isEditing ? (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-            <div className="form-group">
-              <label className="form-label">Nombre</label>
-              <input
-                type="text"
-                name="name"
-                className="form-input"
-                value={editableUser.name}
-                onChange={handleChange}
-              />
+        <div className="user-info-content">
+          {isEditing ? (
+            <div className="form-fields">
+              <div className="form-group">
+                <label className="form-label">Nombre</label>
+                <input
+                  type="text"
+                  name="name"
+                  className="form-input"
+                  value={editableUser.name}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="form-group">
+                <label className="form-label">Carrera</label>
+                <input
+                  type="text"
+                  name="career"
+                  className="form-input"
+                  value={editableUser.career}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="form-group">
+                <label className="form-label">Semestre</label>
+                <input
+                  type="number"
+                  name="semester"
+                  className="form-input"
+                  value={editableUser.semester}
+                  onChange={handleChange}
+                  min="1"
+                  max="12"
+                />
+              </div>
+              <div className="edit-buttons">
+                <button
+                  onClick={handleSave}
+                  className="btn btn-primary btn-sm"
+                >
+                  <Save size={16} /> Guardar
+                </button>
+                <button
+                  onClick={handleEditToggle}
+                  className="btn btn-secondary btn-sm"
+                >
+                  <XCircle size={16} /> Cancelar
+                </button>
+              </div>
             </div>
-            <div className="form-group">
-              <label className="form-label">Carrera</label>
-              <input
-                type="text"
-                name="career"
-                className="form-input"
-                value={editableUser.career}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="form-group">
-              <label className="form-label">Semestre</label>
-              <input
-                type="number"
-                name="semester"
-                className="form-input"
-                value={editableUser.semester}
-                onChange={handleChange}
-                min="1"
-                max="12"
-              />
-            </div>
-            <div className="edit-buttons">
-              <motion.button
-                onClick={handleSave}
-                className="btn btn-primary btn-sm"
-                whileTap={{ scale: 0.95 }}
-              >
-                <Save size={16} /> Guardar
-              </motion.button>
-              <motion.button
+          ) : (
+            <div className="user-details">
+              <p><strong>Nombre:</strong> {user.name}</p>
+              <p><strong>Carrera:</strong> {user.career}</p>
+              <p><strong>Semestre:</strong> {user.semester}</p>
+              <button
                 onClick={handleEditToggle}
-                className="btn btn-secondary btn-sm"
-                whileTap={{ scale: 0.95 }}
+                className="btn btn-primary btn-sm"
               >
-                <XCircle size={16} /> Cancelar
-              </motion.button>
+                <Edit3 size={16} /> Editar Perfil
+              </button>
             </div>
-          </motion.div>
-        ) : (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-            <p className="user-detail">
-              <strong>Nombre:</strong> {user.name}
-            </p>
-            <p className="user-detail">
-              <strong>Carrera:</strong> {user.career}
-            </p>
-            <p className="user-detail">
-              <strong>Semestre:</strong> {user.semester}
-            </p>
-            <motion.button
-              onClick={handleEditToggle}
-              className="btn btn-primary btn-sm edit-profile-btn"
-              whileTap={{ scale: 0.95 }}
-            >
-              <Edit3 size={16} /> Editar Perfil
-            </motion.button>
-          </motion.div>
-        )}
+          )}
+        </div>
       </div>
     </aside>
   );

@@ -12,8 +12,7 @@ function Register({ isAuthenticated, onRegisterSuccess }) {
   const [formData, setFormData] = useState({
     nombre: "",
     correo: "",
-    carrera: "",
-    semestre: "",
+    contrasena: "",
   });
 
   useEffect(() => {
@@ -78,17 +77,7 @@ function Register({ isAuthenticated, onRegisterSuccess }) {
         </motion.div>
       ) : (
         <>
-          <h2>Inicio de Sesión</h2>
-
-          {/* Imagen de perfil fija (predeterminada) */}
-          <motion.div className="profile-image-container" whileHover={{ scale: 1.05 }}>
-            <img
-              alt="Default profile"
-              className="profile-image"
-              src="https://w7.pngwing.com/pngs/128/223/png-transparent-user-person-profile-instagram-ui-colored-icon.png"
-            />
-          </motion.div>
-
+          <h2>Inicio de Sesión (Administrador)</h2>
           <form onSubmit={handleSubmit}>
             <motion.div className="form-group">
               <label className="form-label">Nombre</label>
@@ -115,27 +104,13 @@ function Register({ isAuthenticated, onRegisterSuccess }) {
             </motion.div>
 
             <motion.div className="form-group">
-              <label className="form-label">Carrera</label>
+              <label className="form-label">Contraseña de Administrador</label>
               <input
-                type="text"
-                name="carrera"
+                type="password"
+                name="contrasena"
                 className="form-input"
-                value={formData.carrera}
+                value={formData.contrasena}
                 onChange={handleChange}
-                required
-              />
-            </motion.div>
-
-            <motion.div className="form-group">
-              <label className="form-label">Semestre</label>
-              <input
-                type="number"
-                name="semestre"
-                className="form-input"
-                value={formData.semestre}
-                onChange={handleChange}
-                min="1"
-                max="12"
                 required
               />
             </motion.div>
