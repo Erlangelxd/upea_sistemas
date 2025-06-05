@@ -12,6 +12,7 @@ import Events from "./pages/Events";
 import Announcements from "./pages/Announcements";
 import FAQ from "./pages/FAQ";
 import Home from "./pages/Home";
+import Chat from "./pages/Chat"; // Asegúrate de que este archivo exista
 
 function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
