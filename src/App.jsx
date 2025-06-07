@@ -104,6 +104,14 @@ function App() {
               }
             />
             <Route
+              path="/faq"
+              element={
+                <div className="content-full-width">
+                  <FAQ />
+                </div>
+              }
+            />
+            <Route
               path="/profile"
               element={
                 isAuthenticated ? (
