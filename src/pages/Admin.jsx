@@ -22,7 +22,7 @@ function Admin({ isAuthenticated, onRegisterSuccess }) {
         description: "Redirigiendo a la página de inicio.",
         variant: "info",
       });
-      navigate("/");
+      navigate("/events");
     }
   }, [isAuthenticated, navigate, toast]);
 
@@ -34,7 +34,7 @@ function Admin({ isAuthenticated, onRegisterSuccess }) {
 
   const handleNavigateHome = () => {
     if (onRegisterSuccess) onRegisterSuccess();
-    navigate("/");
+    navigate("/events");
   };
 
   const handleChange = (e) => {

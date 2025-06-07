@@ -41,7 +41,7 @@ function Navbar({ isAuthenticated, toggleAuth, isMobileMenuOpen, toggleMobileMen
           <button className="mobile-menu-button" onClick={toggleMobileMenu}>
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
-          <Link to="/admin" className="nav-link">Administrador</Link>
+          <Link to="/admin" className="nav-link">Admin</Link>
         </div>
       </motion.nav>
 
@@ -63,7 +63,7 @@ function Navbar({ isAuthenticated, toggleAuth, isMobileMenuOpen, toggleMobileMen
             ) : (
               <Link to="/register" className="nav-link" onClick={toggleMobileMenu}>Registro</Link>
             )}
-            <Link to="/admin" className="nav-link">Administrador</Link>
+            <Link to="/admin" className="nav-link">Admin</Link>
             <button
               onClick={() => {
                 toggleAuth();
