@@ -16,7 +16,7 @@ function Navbar({ isAuthenticated, toggleAuth, isMobileMenuOpen, toggleMobileMen
             <Link to="/events" className="nav-link">Eventos</Link>
             <Link to="/announcements" className="nav-link">Anuncios</Link>
             <Link to="/faq" className="nav-link">FAQ</Link>
-            <Link to="/faq" className="nav-link">Administrador</Link>
+            <Link to="/admin" className="nav-link">Administrador</Link>
             {isAuthenticated ? (
               <Link to="/profile" className="nav-link">
                 <User size={18} style={{ marginRight: "4px", verticalAlign: "middle" }} />
@@ -57,7 +57,7 @@ function Navbar({ isAuthenticated, toggleAuth, isMobileMenuOpen, toggleMobileMen
             <Link to="/events" className="nav-link" onClick={toggleMobileMenu}>Eventos</Link>
             <Link to="/announcements" className="nav-link" onClick={toggleMobileMenu}>Anuncios</Link>
             <Link to="/faq" className="nav-link" onClick={toggleMobileMenu}>FAQ</Link>
-            <Link to="/faq" className="nav-link">Administrador</Link>
+            <Link to="/admin" className="nav-link">Administrador</Link>
             {isAuthenticated ? (
               <Link to="/profile" className="nav-link" onClick={toggleMobileMenu}>Ver perfil</Link>
             ) : (

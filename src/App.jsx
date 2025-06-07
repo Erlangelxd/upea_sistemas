@@ -10,6 +10,7 @@ import Register from "./pages/Register";
 import UserProfile from "./pages/UserProfile";
 import Events from "./pages/Events";
 import Chat from "./pages/Chat";
+import Admin from "./pages/Admin";
 import Announcements from "./pages/Announcements";
 import FAQ from "./pages/FAQ";
 
@@ -104,10 +105,10 @@ function App() {
               }
             />
             <Route
-              path="/faq"
+              path="/admin"
               element={
                 <div className="content-full-width">
-                  <FAQ />
+                  < Admin/>
                 </div>
               }
             />
