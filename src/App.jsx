@@ -108,7 +108,7 @@ function App() {
               path="/admin"
               element={
                 <div className="content-full-width">
-                  < Admin/>
+                  <Admin />
                 </div>
               }
             />
