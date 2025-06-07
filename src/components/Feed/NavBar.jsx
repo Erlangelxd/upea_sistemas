@@ -16,6 +16,7 @@ function Navbar({ isAuthenticated, toggleAuth, isMobileMenuOpen, toggleMobileMen
             <Link to="/events" className="nav-link">Eventos</Link>
             <Link to="/announcements" className="nav-link">Anuncios</Link>
             <Link to="/faq" className="nav-link">FAQ</Link>
+            <Link to="/panel_admin" className="nav-link">Panel_admin</Link>
             
             {isAuthenticated ? (
               <Link to="/profile" className="nav-link">
