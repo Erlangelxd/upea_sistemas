@@ -3,51 +3,83 @@ import { motion } from "framer-motion";
 import { Calendar, MapPin, Users } from "lucide-react";
 import { getEventos } from "../services/services_generales";
 
-import UploadForm from "../components/Feed/UploadForm";
-import Events from "./Events";
-import Announcements from "./Announcements";
-import CreateEventForm from "./CreateEventForm";
-import CreateAnnouncementForm from "./CreateAnnouncementForm";
+function Events() {
+  const [events, setEvents] = useState([]);
 
-function PanelAdmin({ subjects, semesters }) {
+  useEffect(() => {
+    const fetchEventos = async () => {
+      try {
+        const data = await getEventos();
+        setEvents(data || []);
+      } catch (error) {
+        console.error("Error al obtener eventos:", error);
+      }
+    };
+    fetchEventos();
+  }, []);
+
+  const formatearFecha = (fecha) =>
+    fecha
+      ? new Date(fecha).toLocaleDateString("es-ES", {
+          day: "numeric",
+          month: "long",
+          year: "numeric",
+        })
+      : "Fecha no disponible";
+
+  const formatearHora = (hora) => (hora ? hora.substring(0, 5) : "--:--");
+
   return (
-    <div className="p-6 space-y-10">
-      <h1 className="text-3xl font-bold">Panel de Administrador</h1>
+    <motion.div
+      className="content"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.3 }}
+    >
+      <h2 className="text-2xl font-semibold mb-4">Eventos de la Carrera</h2>
 
-      {/* Subida de contenido académico */}
-      <section>
-        <h2 className="text-xl font-semibold mb-2">Subir Contenido Académico</h2>
-        <UploadForm subjects={subjects} semesters={semesters} onSubmit={(data) => {
-          // Aquí puedes implementar lógica para enviar datos al backend
-          console.log("Contenido subido:", data);
-        }} />
-      </section>
+      {events.length === 0 ? (
+        <p>No hay eventos disponibles en este momento.</p>
+      ) : (
+        <div className="events-grid">
+          {events.map((event) => (
+            <motion.div
+              key={event.id_eventos}
+              className="card"
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.2 }}
+            >
+              <h3 className="text-lg font-bold mb-2">{event.titulo}</h3>
 
-      {/* Crear nuevo evento */}
-      <section>
-        <h2 className="text-xl font-semibold mt-10 mb-2">Crear Nuevo Evento</h2>
-        <CreateEventForm />
-      </section>
+              <div className="event-details space-y-2">
+                <div className="event-info flex items-center gap-2">
+                  <Calendar size={20} />
+                  <div>
+                    <p>{formatearFecha(event.fecha_evento)}</p>
+                    <p className="text-sm text-gray-500">
+                      {formatearHora(event.hora_inicio)} - {formatearHora(event.hora_fin)}
+                    </p>
+                  </div>
+                </div>
 
-      {/* Crear nuevo anuncio */}
-      <section>
-        <h2 className="text-xl font-semibold mt-10 mb-2">Crear Nuevo Anuncio</h2>
-        <CreateAnnouncementForm />
-      </section>
+                <div className="event-info flex items-center gap-2">
+                  <MapPin size={20} />
+                  <p>{event.lugar}</p>
+                </div>
 
-      {/* Lista de eventos */}
-      <section>
-        <h2 className="text-xl font-semibold mt-10 mb-2">Lista de Eventos</h2>
-        <Events />
-      </section>
+                <div className="event-info flex items-center gap-2">
+                  <Users size={20} />
+                  <p>Capacidad: {event.capacidad}</p>
+                </div>
+              </div>
 
-      {/* Lista de anuncios */}
-      <section>
-        <h2 className="text-xl font-semibold mt-10 mb-2">Lista de Anuncios</h2>
-        <Announcements />
-      </section>
-    </div>
+              <p className="event-description mt-2 text-sm text-gray-700">{event.descripcion}</p>
+            </motion.div>
+          ))}
+        </div>
+      )}
+    </motion.div>
   );
 }
 
-export default PanelAdmin;
+export default Events;
