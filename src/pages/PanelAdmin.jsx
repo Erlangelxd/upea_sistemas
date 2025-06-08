@@ -2,8 +2,8 @@ import React from "react";
 import UploadForm from "../components/Feed/UploadForm";
 import Events from "./Events";
 import Announcements from "./Announcements";
-import CreateEventForm from "./CreateEventForm"; // lo explico abajo
-import CreateAnnouncementForm from "./CreateAnnouncementForm"; // lo explico abajo
+import CreateEventForm from "./CreateEventForm";
+import CreateAnnouncementForm from "./CreateAnnouncementForm";
 
 function PanelAdmin({ subjects, semesters }) {
   return (
