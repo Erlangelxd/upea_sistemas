@@ -1,5 +1,5 @@
 import React from "react";
-import UploadForm from "./UploadForm";
+import UploadForm from "../components/Feed/UploadForm";
 import Events from "./Events";
 import Announcements from "./Announcements";
 import CreateEventForm from "./CreateEventForm"; // lo explico abajo

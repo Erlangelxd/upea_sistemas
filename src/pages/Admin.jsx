@@ -64,8 +64,8 @@ function Admin({ isAuthenticated, onRegisterSuccess }) {
           transition={{ duration: 0.3 }}
         >
           <CheckCircle size={64} className="success-icon" />
-          <h2>¡Registro Exitoso!</h2>
-          <p>Tu cuenta ha sido creada correctamente.</p>
+          <h2>¡Acceso Exitoso!</h2>
+          <p>Bienvenido.</p>
           <motion.button
             onClick={handleNavigateHome}
             className="btn btn-primary"

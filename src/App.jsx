@@ -11,7 +11,7 @@ import UserProfile from "./pages/UserProfile";
 import Events from "./pages/Events";
 import Chat from "./pages/Chat";
 import Admin from "./pages/Admin";
-import PanelAdmin from "./components/Feed/PanelAdmin";
+import PanelAdmin from "./pages/PanelAdmin";
 import Announcements from "./pages/Announcements";
 import FAQ from "./pages/FAQ";
 
