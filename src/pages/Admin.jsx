@@ -72,7 +72,7 @@ function Admin({ isAuthenticated, onRegisterSuccess }) {
             whileTap={{ scale: 0.95 }}
             style={{ marginTop: "1.5rem" }}
           >
-            Ir al administrador
+            Empezar
           </motion.button>
         </motion.div>
       ) : (
@@ -120,7 +120,7 @@ function Admin({ isAuthenticated, onRegisterSuccess }) {
               className="btn btn-primary"
               whileTap={{ scale: 0.95 }}
             >
-              Iniciar Sesión
+              Ingresar
             </motion.button>
           </form>
         </>
