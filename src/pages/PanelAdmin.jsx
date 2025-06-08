@@ -1,4 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { Calendar, MapPin, Users } from "lucide-react";
+import { getEventos } from "../services/services_generales";
+
 import UploadForm from "../components/Feed/UploadForm";
 import Events from "./Events";
 import Announcements from "./Announcements";
