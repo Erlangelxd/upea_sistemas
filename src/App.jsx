@@ -11,7 +11,7 @@ import UserProfile from "./pages/UserProfile";
 import Events from "./pages/Events";
 import Chat from "./pages/Chat";
 import Admin from "./pages/Admin";
-import AdminPanel from "./pages/PanelAdmin";
+import PanelAdmin from "./pages/PanelAdmin";
 import Announcements from "./pages/Announcements";
 import FAQ from "./pages/FAQ";
 
@@ -117,7 +117,7 @@ function App() {
               path="/panel_admin"
               element={
                 <div className="content-full-width">
-                  <AdminPanel />
+                  <PanelAdmin />
                 </div>
               }
             />

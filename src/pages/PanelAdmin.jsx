@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-function AdminPanel() {
+function PanelAdmin() {
   const [mensaje, setMensaje] = useState("");
 
   // ----------------- ANUNCIOS ------------------
@@ -170,4 +170,4 @@ function AdminPanel() {
   );
 }
 
-export default AdminPanel;
+export default PanelAdmin;
