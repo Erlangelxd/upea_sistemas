@@ -4,7 +4,7 @@ function PanelAdmin() {
   return (
     <motion.div>
       <h1>Panel de administrador</h1>
-      <h2>Agrega un evento</h2>
+      <h2>Agregar un nuevo evento</h2>
       <motion.div className="form-group">
         <label className="form-label">Nombre del evento</label>
         <input
@@ -24,26 +24,29 @@ function PanelAdmin() {
           name="hora_evento"
           className="form-input"
         />
-        <label className="form-label">Ubicacion</label>
+        <label className="form-label">Ubicación</label>
         <input
           type="text"
           name="ubicacion_evento"
           className="form-input"
         />
-        <label className="form-label">Ubicacion</label>
-        <input
-          type="text"
-          name="ubicacion_evento"
-          className="form-input"
-        />
-        <label className="form-label">Descripcion</label>
+        <label className="form-label">Descripción</label>
         <input
           type="text"
           name="descripcion_evento"
           className="form-input"
         />
       </motion.div>
-      <h2>Agrega un anuncio</h2>
+      <motion.button
+        className="btn btn-primary"
+        whileTap={{ scale: 0.95 }}
+        style={{ marginTop: "1.5rem" }}
+      >
+        Publicar evento
+      </motion.button>
+
+      
+      <h2>Agregar un nuevo anuncio</h2>
       <motion.div className="form-group">
         <label className="form-label">Titulo del anuncio</label>
         <input
@@ -51,7 +54,7 @@ function PanelAdmin() {
           name="nombre_anuncio"
           className="form-input"
         />
-        <label className="form-label">Descripcion</label>
+        <label className="form-label">Descripción</label>
         <input
           type="text"
           name="descripcion_anuncio"
@@ -70,6 +73,13 @@ function PanelAdmin() {
           className="form-input"
         />
       </motion.div>
+      <motion.button
+        className="btn btn-primary"
+        whileTap={{ scale: 0.95 }}
+        style={{ marginTop: "1.5rem" }}
+      >
+        Publicar anuncio
+      </motion.button>
     </motion.div>
   )
 };
