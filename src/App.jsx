@@ -25,7 +25,7 @@ function App() {
     career: "Ing. en Sistemas",
     semester: 5,
     avatarUrl:
-      "https://w7.pngwing.com/pngs/128/223/png-transparent-user-person-profile-instagram-ui-colored-icon.png",
+      "https://cdn-icons-png.flaticon.com/512/6073/6073873.png",
   });
 
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);

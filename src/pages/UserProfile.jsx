@@ -39,7 +39,7 @@ function UserProfileSidebar({ user, onUpdateUser }) {
           <img
             alt="Avatar"
             className="profile-image"
-            src="https://w7.pngwing.com/pngs/128/223/png-transparent-user-person-profile-instagram-ui-colored-icon.png"
+            src="https://cdn-icons-png.flaticon.com/512/6073/6073873.png"
           />
         </div>
 
