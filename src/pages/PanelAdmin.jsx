@@ -9,19 +9,37 @@ function PanelAdmin() {
         <label className="form-label">Nombre del evento</label>
         <input
           type="text"
-          name="nombre"
+          name="nombre_evento"
           className="form-input"
         />
         <label className="form-label">Fecha</label>
         <input
           type="date"
-          name="fecha"
+          name="fecha_evento"
           className="form-input"
         />
         <label className="form-label">Hora</label>
         <input
           type="time"
-          name="hora"
+          name="hora_evento"
+          className="form-input"
+        />
+        <label className="form-label">Ubicacion</label>
+        <input
+          type="text"
+          name="ubicacion_evento"
+          className="form-input"
+        />
+        <label className="form-label">Ubicacion</label>
+        <input
+          type="text"
+          name="ubicacion_evento"
+          className="form-input"
+        />
+        <label className="form-label">Descripcion</label>
+        <input
+          type="text"
+          name="descripcion_evento"
           className="form-input"
         />
       </motion.div>
@@ -30,7 +48,25 @@ function PanelAdmin() {
         <label className="form-label">Titulo del anuncio</label>
         <input
           type="text"
-          name="nombre"
+          name="nombre_anuncio"
+          className="form-input"
+        />
+        <label className="form-label">Descripcion</label>
+        <input
+          type="text"
+          name="descripcion_anuncio"
+          className="form-input"
+        />
+        <label className="form-label">Fecha</label>
+        <input
+          type="date"
+          name="fecha_anuncio"
+          className="form-input"
+        />
+        <label className="form-label">Hora</label>
+        <input
+          type="time"
+          name="hora_anuncio"
           className="form-input"
         />
       </motion.div>
