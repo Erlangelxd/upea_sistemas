@@ -10,7 +10,7 @@ function PanelAdmin() {
           type="text"
           name="nombre"
           className="form-input"
-      />
+        />
       </motion.div>
       <h2>Agrega un anuncio</h2>
       <motion.div className="form-group">
@@ -19,7 +19,7 @@ function PanelAdmin() {
           type="text"
           name="nombre"
           className="form-input"
-      />
+        />
       </motion.div>
     </motion.div>
   )
