@@ -1,85 +1,173 @@
-import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import { Calendar, MapPin, Users } from "lucide-react";
-import { getEventos } from "../services/services_generales";
+import React, { useState } from "react";
+import axios from "axios";
 
-function Events() {
-  const [events, setEvents] = useState([]);
+function AdminPanel() {
+  const [mensaje, setMensaje] = useState("");
 
-  useEffect(() => {
-    const fetchEventos = async () => {
-      try {
-        const data = await getEventos();
-        setEvents(data || []);
-      } catch (error) {
-        console.error("Error al obtener eventos:", error);
-      }
-    };
-    fetchEventos();
-  }, []);
+  // ----------------- ANUNCIOS ------------------
+  const [anuncio, setAnuncio] = useState({
+    titulo: "",
+    contenido: "",
+    prioridad: "normal",
+  });
 
-  const formatearFecha = (fecha) =>
-    fecha
-      ? new Date(fecha).toLocaleDateString("es-ES", {
-          day: "numeric",
-          month: "long",
-          year: "numeric",
-        })
-      : "Fecha no disponible";
+  const handleAnuncioChange = (e) =>
+    setAnuncio({ ...anuncio, [e.target.name]: e.target.value });
 
-  const formatearHora = (hora) => (hora ? hora.substring(0, 5) : "--:--");
+  const enviarAnuncio = async () => {
+    try {
+      await axios.post("http://localhost:8000/anuncios", anuncio);
+      setMensaje("✅ Anuncio creado correctamente");
+      setAnuncio({ titulo: "", contenido: "", prioridad: "normal" });
+    } catch (error) {
+      console.error(error);
+      setMensaje("❌ Error al crear anuncio");
+    }
+  };
+
+  // ----------------- EVENTOS ------------------
+  const [evento, setEvento] = useState({
+    titulo: "",
+    descripcion: "",
+    lugar: "",
+    fecha_evento: "",
+    hora_inicio: "",
+    hora_fin: "",
+    capacidad: 0,
+  });
+
+  const handleEventoChange = (e) =>
+    setEvento({ ...evento, [e.target.name]: e.target.value });
+
+  const enviarEvento = async () => {
+    try {
+      await axios.post("http://localhost:8000/eventos", evento);
+      setMensaje("✅ Evento creado correctamente");
+      setEvento({
+        titulo: "",
+        descripcion: "",
+        lugar: "",
+        fecha_evento: "",
+        hora_inicio: "",
+        hora_fin: "",
+        capacidad: 0,
+      });
+    } catch (error) {
+      console.error(error);
+      setMensaje("❌ Error al crear evento");
+    }
+  };
 
   return (
-    <motion.div
-      className="content"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.3 }}
-    >
-      <h2 className="text-2xl font-semibold mb-4">Eventos de la Carrera</h2>
+    <div className="max-w-4xl mx-auto p-6 bg-white rounded-xl shadow-lg mt-10">
+      <h1 className="text-3xl font-bold mb-6 text-center">Panel de Administración</h1>
 
-      {events.length === 0 ? (
-        <p>No hay eventos disponibles en este momento.</p>
-      ) : (
-        <div className="events-grid">
-          {events.map((event) => (
-            <motion.div
-              key={event.id_eventos}
-              className="card"
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.2 }}
-            >
-              <h3 className="text-lg font-bold mb-2">{event.titulo}</h3>
+      {/* ---------------- FORM ANUNCIO ---------------- */}
+      <div className="mb-10">
+        <h2 className="text-xl font-semibold mb-4">📢 Crear Anuncio</h2>
 
-              <div className="event-details space-y-2">
-                <div className="event-info flex items-center gap-2">
-                  <Calendar size={20} />
-                  <div>
-                    <p>{formatearFecha(event.fecha_evento)}</p>
-                    <p className="text-sm text-gray-500">
-                      {formatearHora(event.hora_inicio)} - {formatearHora(event.hora_fin)}
-                    </p>
-                  </div>
-                </div>
+        <input
+          name="titulo"
+          value={anuncio.titulo}
+          onChange={handleAnuncioChange}
+          placeholder="Título"
+          className="w-full border px-4 py-2 mb-2 rounded"
+        />
+        <textarea
+          name="contenido"
+          value={anuncio.contenido}
+          onChange={handleAnuncioChange}
+          placeholder="Contenido del anuncio"
+          className="w-full border px-4 py-2 mb-2 rounded"
+        />
+        <select
+          name="prioridad"
+          value={anuncio.prioridad}
+          onChange={handleAnuncioChange}
+          className="w-full border px-4 py-2 mb-4 rounded"
+        >
+          <option value="normal">Normal</option>
+          <option value="urgente">Urgente</option>
+          <option value="informativo">Informativo</option>
+        </select>
 
-                <div className="event-info flex items-center gap-2">
-                  <MapPin size={20} />
-                  <p>{event.lugar}</p>
-                </div>
+        <button
+          onClick={enviarAnuncio}
+          className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700"
+        >
+          Publicar Anuncio
+        </button>
+      </div>
 
-                <div className="event-info flex items-center gap-2">
-                  <Users size={20} />
-                  <p>Capacidad: {event.capacidad}</p>
-                </div>
-              </div>
+      {/* ---------------- FORM EVENTO ---------------- */}
+      <div>
+        <h2 className="text-xl font-semibold mb-4">📅 Crear Evento</h2>
 
-              <p className="event-description mt-2 text-sm text-gray-700">{event.descripcion}</p>
-            </motion.div>
-          ))}
+        <input
+          name="titulo"
+          value={evento.titulo}
+          onChange={handleEventoChange}
+          placeholder="Título del evento"
+          className="w-full border px-4 py-2 mb-2 rounded"
+        />
+        <textarea
+          name="descripcion"
+          value={evento.descripcion}
+          onChange={handleEventoChange}
+          placeholder="Descripción"
+          className="w-full border px-4 py-2 mb-2 rounded"
+        />
+        <input
+          name="lugar"
+          value={evento.lugar}
+          onChange={handleEventoChange}
+          placeholder="Lugar del evento"
+          className="w-full border px-4 py-2 mb-2 rounded"
+        />
+        <input
+          name="fecha_evento"
+          value={evento.fecha_evento}
+          onChange={handleEventoChange}
+          type="date"
+          className="w-full border px-4 py-2 mb-2 rounded"
+        />
+        <div className="flex gap-2 mb-2">
+          <input
+            name="hora_inicio"
+            value={evento.hora_inicio}
+            onChange={handleEventoChange}
+            type="time"
+            className="w-full border px-4 py-2 rounded"
+          />
+          <input
+            name="hora_fin"
+            value={evento.hora_fin}
+            onChange={handleEventoChange}
+            type="time"
+            className="w-full border px-4 py-2 rounded"
+          />
         </div>
-      )}
-    </motion.div>
+        <input
+          name="capacidad"
+          value={evento.capacidad}
+          onChange={handleEventoChange}
+          type="number"
+          placeholder="Capacidad"
+          className="w-full border px-4 py-2 mb-4 rounded"
+        />
+
+        <button
+          onClick={enviarEvento}
+          className="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700"
+        >
+          Publicar Evento
+        </button>
+      </div>
+
+      {/* ---------------- MENSAJE ---------------- */}
+      {mensaje && <p className="mt-6 text-center font-semibold">{mensaje}</p>}
+    </div>
   );
 }
 
-export default Events;
+export default AdminPanel;
