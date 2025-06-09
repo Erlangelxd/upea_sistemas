@@ -1,5 +1,70 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+
 function PanelAdmin() {
+  const [mensaje, setMensaje] = useState("");
+
+  const [anuncio, setAnuncio] = useState({
+    titulo: "",
+    contenido: "",
+    prioridad: "normal",
+  });
+
+  const handleAnuncioChange = (e) =>
+    setAnuncio({ ...anuncio, [e.target.name]: e.target.value });
+
+  const enviarAnuncio = async () => {
+    try {
+      const res = await fetch("http://localhost:8000/anuncios", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(anuncio),
+      });
+      if (!res.ok) throw new Error("Error en el servidor");
+      setMensaje("✅ Anuncio creado correctamente");
+      setAnuncio({ titulo: "", contenido: "", prioridad: "normal" });
+    } catch (error) {
+      console.error(error);
+      setMensaje("❌ Error al crear anuncio");
+    }
+  };
+
+  const [evento, setEvento] = useState({
+    titulo: "",
+    descripcion: "",
+    lugar: "",
+    fecha_evento: "",
+    hora_inicio: "",
+    hora_fin: "",
+    capacidad: 0,
+  });
+
+  const handleEventoChange = (e) =>
+    setEvento({ ...evento, [e.target.name]: e.target.value });
+
+  const enviarEvento = async () => {
+    try {
+      const res = await fetch("http://localhost:8000/eventos", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(evento),
+      });
+      if (!res.ok) throw new Error("Error en el servidor");
+      setMensaje("✅ Evento creado correctamente");
+      setEvento({
+        titulo: "",
+        descripcion: "",
+        lugar: "",
+        fecha_evento: "",
+        hora_inicio: "",
+        hora_fin: "",
+        capacidad: 0,
+      });
+    } catch (error) {
+      console.error(error);
+      setMensaje("❌ Error al crear evento");
+    }
+  };
+
   return (
     <div className="max-w-4xl mx-auto p-6 bg-white rounded-xl shadow-lg mt-10">
       <h1 className="text-3xl font-bold mb-6 text-center">Panel de Administración</h1>
