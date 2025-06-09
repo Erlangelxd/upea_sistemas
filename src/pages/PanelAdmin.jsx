@@ -16,7 +16,7 @@ function AdminPanel() {
 
   const enviarAnuncio = async () => {
     try {
-      await axios.post("http://localhost:8000/anuncios", anuncio);
+      await axios.post("https://upea-sistemas.vercel.app/announcements", anuncio);
       setMensaje("✅ Anuncio creado correctamente");
       setAnuncio({ titulo: "", contenido: "", prioridad: "normal" });
     } catch (error) {
@@ -41,7 +41,7 @@ function AdminPanel() {
 
   const enviarEvento = async () => {
     try {
-      await axios.post("http://localhost:8000/eventos", evento);
+      await axios.post("https://upea-sistemas.vercel.app/events", evento);
       setMensaje("✅ Evento creado correctamente");
       setEvento({
         titulo: "",
