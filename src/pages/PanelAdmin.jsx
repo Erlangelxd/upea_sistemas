@@ -6,16 +6,28 @@ function PanelAdmin() {
       <h1>Panel de administrador</h1>
       <h2>Agrega un evento</h2>
       <motion.div className="form-group">
-        <label className="form-label">Nombre</label>
+        <label className="form-label">Nombre del evento</label>
         <input
           type="text"
           name="nombre"
           className="form-input"
         />
+        <label className="form-label">Fecha</label>
+        <input
+          type="date"
+          name="fecha"
+          className="form-input"
+        />
+        <label className="form-label">Hora</label>
+        <input
+          type="time"
+          name="hora"
+          className="form-input"
+        />
       </motion.div>
       <h2>Agrega un anuncio</h2>
       <motion.div className="form-group">
-        <label className="form-label">Nombre</label>
+        <label className="form-label">Titulo del anuncio</label>
         <input
           type="text"
           name="nombre"
