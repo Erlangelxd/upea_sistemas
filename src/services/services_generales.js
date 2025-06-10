@@ -1,4 +1,5 @@
-const API_URL = "http://localhost:8000"; // Cambia esto según tu backend
+const API_URL = "https://codigo-backend.onrender.com"; // Cambia esto según tu backend
+// const API_URL = "http://localhost:8000"; // Cambia esto según tu backend
 
 export async function getMaterias() {
   const response = await fetch(`${API_URL}/materias/obtener`);

@@ -23,9 +23,8 @@ function FAQ() {
   //console.log(faqs);
 
   return (
-    // Use content-full-width for components that should span the grid when sidebar/widget are hidden
     <motion.div 
-      className="content-full-width" // Apply the full width class
+      className="content-full-width" 
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
@@ -39,11 +38,11 @@ function FAQ() {
         {faqs.map((faq) => (
           <motion.div 
             key={faq.id_faq}
-            className="card faq-card" // Keep card for styling, but layout handled by container
-            initial={{ opacity: 0, y: 10 }} // Subtle entry animation
+            className="card faq-card" 
+            initial={{ opacity: 0, y: 10 }} 
             animate={{ opacity: 1, y: 0 }}
             whileHover={{ scale: 1.01 }}
-            transition={{ delay: faq.id * 0.05 }} // Stagger animation
+            transition={{ delay: faq.id * 0.05 }} 
           >
             <button
               className="faq-question"
@@ -60,11 +59,11 @@ function FAQ() {
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: "auto" }}
                   exit={{ opacity: 0, height: 0 }}
-                  transition={{ duration: 0.3, ease: "easeInOut" }} // Smoother transition
+                  transition={{ duration: 0.3, ease: "easeInOut" }} 
                 >
                   {/* Preserve line breaks from the answer string */}
                   {faq.respuesta.split('\n').map((line, index) => (
-                    <p key={index}>{line || '\u00A0'}</p> // Use non-breaking space for empty lines
+                    <p key={index}>{line || '\u00A0'}</p> 
                   ))}
                 </motion.div>
               )}

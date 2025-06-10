@@ -10,9 +10,9 @@ function Admin({ isAuthenticated, onRegisterSuccess }) {
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
   const [formData, setFormData] = useState({
-    nombre: "",
-    correo: "",
-    contrasena: "",
+    nombre: "admin",
+    correo: "admin@gmail.com",
+    contrasena: "elasesinodedota123",
   });
 
   useEffect(() => {

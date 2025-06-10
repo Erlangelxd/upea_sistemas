@@ -4,9 +4,7 @@ import { Book, Calendar, Download } from "lucide-react";
 
 function PostCard({ post, index }) {
   const handleDownload = () => {
-    // Placeholder for download logic
     console.log(`Downloading post ${post.id}`);
-    // In a real app, trigger file download here
   };
 
   return (
@@ -15,7 +13,7 @@ function PostCard({ post, index }) {
       className="card content-card"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.05 + 0.2 }} // Stagger animation slightly
+      transition={{ delay: index * 0.05 + 0.2 }} 
       exit={{ opacity: 0, y: -20 }}
     >
       <div className="content-header">

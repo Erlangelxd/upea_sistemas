@@ -25,7 +25,7 @@ function Home({ isAuthenticated, user, onUpdateUser }) {
   }, []);
 
   useEffect(() => {
-    setFilterSubject(""); // Resetear materia al cambiar semestre
+    setFilterSubject(""); 
   }, [filterSemester]);
 
   const subjects = [...new Set(datos.map((d) => d.nombre))];
@@ -40,7 +40,7 @@ function Home({ isAuthenticated, user, onUpdateUser }) {
     const matchesSearch = !searchTerm || d.nombre.toLowerCase().includes(searchTerm.toLowerCase());
     return matchesSemester && matchesSubject && matchesSearch;
   });
-
+  //console.log(datos)
   return (
     <>
       {isAuthenticated && (
