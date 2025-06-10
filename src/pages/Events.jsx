@@ -66,13 +66,7 @@ function Events() {
                   <MapPin size={20} />
                   <p>{event.lugar}</p>
                 </div>
-
-                <div className="event-info flex items-center gap-2">
-                  <Users size={20} />
-                  <p>Capacidad: {event.capacidad}</p>
-                </div>
               </div>
-
               <p className="event-description mt-2 text-sm text-gray-700">{event.descripcion}</p>
             </motion.div>
           ))}
