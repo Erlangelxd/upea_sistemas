@@ -29,35 +29,35 @@ app.add_middleware(
 service_materia = MateriaService()
 
 @app.get("/materias/obtener")
-async def root():
+async def get_materias():
     
     materias = service_materia.obtener_materias()
 
     return materias
 
 @app.get("/semestres/obtener")
-async def root():
+async def get_semestres():
     
     semestres = service_materia.obtener_semestres()
 
     return semestres
 
 @app.get("/eventos/obtener")
-async def root():
+async def get_eventos():
     
     eventos = service_materia.obtener_eventos()
 
     return eventos
 
 @app.get("/anuncios/obtener")
-async def root():
+async def get_anuncios():
     
     anuncios = service_materia.obtener_anuncios()
 
     return anuncios
 
 @app.get("/preguntas_frecuentes/obtener")
-async def root():
+async def get_preguntas_frecuentes():
     
     faqs = service_materia.obtener_preguntas_frecuentes()
 
@@ -98,7 +98,3 @@ async def upload_files(
 #         "contenido": contenido
 #     })
 
-
-if __name__ == "__main__":
-    
-    uvicorn.run(app, host="localhost", port=8000)
