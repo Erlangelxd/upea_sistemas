@@ -35,12 +35,7 @@ function App() {
   return (
     <Router>
       <div>
-        <Navbar
-          isAuthenticated={isAuthenticated}
-          toggleAuth={toggleAuth}
-          isMobileMenuOpen={isMobileMenuOpen}
-          toggleMobileMenu={toggleMobileMenu}
-        />
+        
 
         <motion.div
           className={`container main-content ${
