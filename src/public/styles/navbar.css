@@ -94,6 +94,7 @@
   transition: transform 0.3s ease-in-out;
   border-bottom: 1px solid var(--glass-border);
   z-index: 9998; /* Debajo del navbar pero sobre el contenido */
+  width: 100%;
 }
 
 .mobile-menu.active {
