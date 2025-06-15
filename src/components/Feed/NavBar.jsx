@@ -57,7 +57,7 @@ function Navbar({ isAuthenticated, toggleAuth, isMobileMenuOpen, toggleMobileMen
             <Link to="/events" className="nav-link" onClick={toggleMobileMenu}>Eventos</Link>
             <Link to="/announcements" className="nav-link" onClick={toggleMobileMenu}>Anuncios</Link>
             <Link to="/faq" className="nav-link" onClick={toggleMobileMenu}>FAQ</Link>
-            <Link to="/admin" className="nav-link">Admin</Link>
+            <Link to="/admin" className="nav-link" onClick={toggleMobileMenu}>Admin</Link>
             {isAuthenticated ? (
               <Link to="/profile" className="nav-link" onClick={toggleMobileMenu}>Ver perfil</Link>
             ) : (
