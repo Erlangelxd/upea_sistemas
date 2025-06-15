@@ -35,11 +35,16 @@ function App() {
   return (
     <Router>
       <div>
-        
+        <Navbar
+          isAuthenticated={isAuthenticated}
+          toggleAuth={toggleAuth}
+          isMobileMenuOpen={isMobileMenuOpen}
+          toggleMobileMenu={toggleMobileMenu}
+        />
 
         <motion.div
           className={`container main-content ${
-            !isAuthenticated ? "main-content-unauthenticated" : "main-content-unauthenticated"
+            !isAuthenticated ? "main-content-unauthenticated" : ""
           }`}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
