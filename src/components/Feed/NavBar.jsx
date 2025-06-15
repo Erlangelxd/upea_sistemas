@@ -12,18 +12,18 @@ function Navbar({ isAuthenticated, toggleAuth, isMobileMenuOpen, toggleMobileMen
             IngeniaRed
           </Link>
           <div className="nav-links">
-            <Link to="/" className="nav-link" onClick={toggleMobileMenu}>Inicio</Link>
-            <Link to="/events" className="nav-link" onClick={toggleMobileMenu}>Eventos</Link>
-            <Link to="/announcements" className="nav-link" onClick={toggleMobileMenu}>Anuncios</Link>
-            <Link to="/faq" className="nav-link" onClick={toggleMobileMenu}>FAQ</Link>
-            <Link to="/admin" className="nav-link" onClick={toggleMobileMenu}>Admin</Link>
+            <Link to="/" className="nav-link">Inicio</Link>
+            <Link to="/events" className="nav-link">Eventos</Link>
+            <Link to="/announcements" className="nav-link">Anuncios</Link>
+            <Link to="/faq" className="nav-link">FAQ</Link>
+            <Link to="/admin" className="nav-link">Admin</Link>
             {isAuthenticated ? (
-              <Link to="/profile" className="nav-link" onClick={toggleMobileMenu}>
+              <Link to="/profile" className="nav-link">
                 <User size={18} style={{ marginRight: "4px", verticalAlign: "middle" }} />
                 Ver perfil
               </Link>
             ) : (
-              <Link to="/register" className="nav-link" onClick={toggleMobileMenu}>
+              <Link to="/register" className="nav-link">
                 <LogIn size={18} style={{ marginRight: "4px", verticalAlign: "middle" }} />
                 Registro
               </Link>
@@ -39,7 +39,7 @@ function Navbar({ isAuthenticated, toggleAuth, isMobileMenuOpen, toggleMobileMen
           </div>
 
           <button className="mobile-menu-button" onClick={toggleMobileMenu}>
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isMobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
           </button>
         </div>
       </motion.nav>
