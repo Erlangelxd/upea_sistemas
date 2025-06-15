@@ -6,7 +6,7 @@ function PostCard({ post, index }) {
   const handleDownload = () => {
     console.log(`Downloading post ${post.id}`);
   };
-
+let verificacion= True
   return (
     <motion.div
       key={post.id}
@@ -38,6 +38,12 @@ function PostCard({ post, index }) {
         <Download size={18} />
         Descargar
       </button>
+      if (verificacion === True){
+        <button onClick={handleDownload} className="btn btn-secondary">
+        <Download size={18} />
+        Borrar
+      </button>
+      } 
     </motion.div>
   );
 }

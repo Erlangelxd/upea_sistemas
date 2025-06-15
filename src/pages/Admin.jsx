@@ -12,7 +12,7 @@ function Admin({ isAuthenticated, onRegisterSuccess }) {
   const [formData, setFormData] = useState({
     nombre: "admin",
     correo: "admin@gmail.com",
-    contrasena: "elasesinodedota123",
+    contrasena: "elasesinodedota123xdxdxd",
   });
 
   useEffect(() => {
