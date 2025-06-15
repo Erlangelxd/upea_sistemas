@@ -39,7 +39,7 @@ function Navbar({ isAuthenticated, toggleAuth, isMobileMenuOpen, toggleMobileMen
           </div>
 
           <button className="mobile-menu-button" onClick={toggleMobileMenu}>
-            {isMobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </motion.nav>
