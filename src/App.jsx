@@ -32,7 +32,6 @@ function App() {
   const toggleAuth = () => setIsAuthenticated(!isAuthenticated);
   const handleUpdateUser = (updatedData) =>
     setCurrentUser((prev) => ({ ...prev, ...updatedData }));
-  
   return (
     <Router>
       <div>
@@ -45,7 +44,7 @@ function App() {
 
         <motion.div
           className={`container main-content ${
-            !isAuthenticated ? "main-content-unauthenticated" : ""
+            !isAuthenticated ? "main-content-unauthenticated" : "main-content-unauthenticated"
           }`}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
