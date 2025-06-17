@@ -35,10 +35,8 @@ function Card({
         <div className="content-header">
           <h3><b>{titulo || "Sin título"}</b></h3>
           <span className="content-type">{tipo_contenido || "Documento"}</span>
-            <div className="meta-item">
-              <User size={16} />
-            <span>{autor || "Anónimo"}</span>
-          </div>
+          <User size={16} />
+          <span>{autor || "Anónimo"}</span>
         </div>
 
         {descripcion && (
@@ -57,6 +55,10 @@ function Card({
             <Calendar size={16} />
             <span>{semestre || "Sin semestre"}</span>
           </div>
+          {/* <div className="meta-item">
+            <User size={16} />
+            <span>{autor || "Anónimo"}</span>
+          </div> */}
           <div className="meta-item">
             <Clock size={16} />
             <span>{fecha_subida ? formatDate(fecha_subida) : "Sin fecha"}</span>
