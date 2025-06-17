@@ -84,6 +84,7 @@ function PanelAdmin() {
           Publicar anuncio
         </motion.button>
       </motion.div>
+      
     </motion.div>
   )
 };
