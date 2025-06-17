@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Book, Calendar, Download, FileText, User, Clock } from "lucide-react";
 
-function Card({ 
+function Card({
   id,
   titulo,
   descripcion,
@@ -26,66 +26,56 @@ function Card({
 
   return (
     <motion.div
-      className="w-full bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg"
+      className="w-full max-w-md mx-auto bg-white rounded-lg shadow-md overflow-hidden md:max-w-2xl lg:max-w-3xl mb-6"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: (id % 10) * 0.05 }}
       exit={{ opacity: 0, y: -20 }}
     >
-      <div className="p-4 sm:p-5">
-        {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 mb-3">
-          <h3 className="text-lg font-bold text-gray-800 line-clamp-2 flex-1">
+      <div className="p-6">
+        <div className="flex justify-between items-start mb-4">
+          <h3 className="text-lg font-bold text-gray-800 md:text-xl lg:text-2xl">
             {titulo || "Sin título"}
           </h3>
-          <span className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full whitespace-nowrap">
+          <span className="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">
             {tipo_contenido || "Documento"}
           </span>
         </div>
 
-        {/* Descripción */}
         {descripcion && (
           <div className="mb-4">
-            <h4 className="text-sm font-semibold text-gray-600 mb-1">Descripción:</h4>
-            <p className="text-gray-700 text-sm line-clamp-3">
-              {descripcion}
-            </p>
+            <h4 className="text-sm font-semibold text-gray-600 mb-1 md:text-base">Descripción:</h4>
+            <p className="text-gray-600 text-sm md:text-base">{descripcion}</p>
           </div>
         )}
 
-        {/* Metadatos */}
-        <div className="grid grid-cols-1 xs:grid-cols-2 gap-2 mb-4">
-          <div className="flex items-center text-sm text-gray-600">
-            <Book size={14} className="mr-1.5 min-w-[16px] text-gray-500" />
-            <span className="truncate">{materia || "Sin materia"}</span>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+          <div className="flex items-center space-x-2">
+            <Book size={16} className="text-gray-500" />
+            <span className="text-sm text-gray-600 md:text-base">{materia || "Sin materia"}</span>
           </div>
-          <div className="flex items-center text-sm text-gray-600">
-            <Calendar size={14} className="mr-1.5 min-w-[16px] text-gray-500" />
-            <span className="truncate">{semestre || "Sin semestre"}</span>
+          <div className="flex items-center space-x-2">
+            <Calendar size={16} className="text-gray-500" />
+            <span className="text-sm text-gray-600 md:text-base">{semestre || "Sin semestre"}</span>
           </div>
-          <div className="flex items-center text-sm text-gray-600">
-            <User size={14} className="mr-1.5 min-w-[16px] text-gray-500" />
-            <span className="truncate">{autor || "Anónimo"}</span>
+          <div className="flex items-center space-x-2">
+            <User size={16} className="text-gray-500" />
+            <span className="text-sm text-gray-600 md:text-base">{autor || "Anónimo"}</span>
           </div>
-          <div className="flex items-center text-sm text-gray-600">
-            <Clock size={14} className="mr-1.5 min-w-[16px] text-gray-500" />
-            <span className="truncate">
+          <div className="flex items-center space-x-2">
+            <Clock size={16} className="text-gray-500" />
+            <span className="text-sm text-gray-600 md:text-base">
               {fecha_subida ? formatDate(fecha_subida) : "Sin fecha"}
             </span>
           </div>
-                            {/* <div className="meta-item">
-          <FileText size={16} />
-          <span>{tipo_contenido || "Sin tipo"}</span>
-        </div> */}
         </div>
 
-        {/* Botón de descarga */}
         <button
           onClick={handleDownload}
-          className="w-full flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded transition-colors duration-200 text-sm sm:text-base"
+          className="w-full flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded transition duration-300"
         >
-          <Download size={16} className="mr-2" />
-          Descargar ({descargas || 0})
+          <Download size={18} />
+          <span>Descargar ({descargas || 0})</span>
         </button>
       </div>
     </motion.div>
