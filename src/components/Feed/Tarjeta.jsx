@@ -29,7 +29,7 @@ function Card({
       className="card content-card"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: id_semestre * 0.05 + 0.2 }}
+      transition={{ delay: id * 0.05 + 0.2 }}
       exit={{ opacity: 0, y: -20 }}
     >
       <div className="content-header">
