@@ -16,12 +16,9 @@ function Card({
 }) {
   const handleDownload = (e) => {
     e.preventDefault();
-    // Lógica para descargar el archivo
     window.open(ruta_archivo, '_blank');
-    // Aquí podrías agregar también registerDownload(id)
   };
 
-  // Formatear fecha para mejor visualización
   const formatDate = (dateString) => {
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     return new Date(dateString).toLocaleDateString('es-ES', options);
@@ -32,7 +29,7 @@ function Card({
       className="card content-card"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: (id % 10) * 0.05 }} // Efecto cascada basado en ID
+      transition={{ delay: (id % 10) * 0.05 }}
       exit={{ opacity: 0, y: -20 }}
     >
       <div className="content-header">
@@ -64,10 +61,10 @@ function Card({
           <Clock size={16} />
           <span>{fecha_subida ? formatDate(fecha_subida) : "Sin fecha"}</span>
         </div>
-        <div className="meta-item">
+        {/* <div className="meta-item">
           <FileText size={16} />
           <span>{tipo_contenido || "Sin tipo"}</span>
-        </div>
+        </div> */}
       </div>
 
       <a 
