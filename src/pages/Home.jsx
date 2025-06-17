@@ -125,13 +125,16 @@ function Home({ isAuthenticated, user, onUpdateUser }) {
 
   return (
     <div className="min-h-screen bg-gray-100">
+      {/* Contenedor principal flex que cambia a columna en móvil */}
       <div className={`flex ${isMobile ? 'flex-col' : ''}`}>
         {isAuthenticated && (
+          /* Sidebar - Ancho completo en móvil, 1/4 fijo en desktop */
           <div className={`${isMobile ? 'w-full' : 'w-1/4 fixed h-screen'}`}>
             <UserProfileSidebar user={user} onUpdateUser={onUpdateUser} />
           </div>
         )}
 
+        {/* Contenido principal - Ajustes responsive basados en autenticación */}
         <div 
           className={`${isAuthenticated ? (isMobile ? 'w-full mt-16' : 'w-3/4 ml-auto') : 'w-full'} p-4`}
         >
@@ -139,16 +142,9 @@ function Home({ isAuthenticated, user, onUpdateUser }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.3 }}
-            
+            className="max-w-6xl mx-auto"
           >
-            {/* {isAuthenticated && (
-              <UploadForm
-                onSubmit={handleUpload}
-                subjects={subjects}
-                semesters={semestres}
-              />
-            )} */}
-
+            {/* Componente de búsqueda y filtros */}
             <SearchFilter
               searchTerm={searchTerm}
               setSearchTerm={setSearchTerm}
@@ -161,6 +157,7 @@ function Home({ isAuthenticated, user, onUpdateUser }) {
               isMobile={isMobile}
             />
 
+            {/* Grid de tarjetas - Responsive con diferentes columnas */}
             <div className={`grid ${isMobile ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'} gap-4 mt-6`}>
               {filteredContents.length > 0 ? (
                 filteredContents.map((content, index) => {
@@ -185,6 +182,7 @@ function Home({ isAuthenticated, user, onUpdateUser }) {
                   );
                 })
               ) : (
+                /* Mensaje cuando no hay contenido */
                 <div className="col-span-full text-center py-10">
                   <p className="text-gray-500">No se encontraron contenidos académicos</p>
                 </div>
