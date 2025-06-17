@@ -24,60 +24,60 @@ function Card({
     return new Date(dateString).toLocaleDateString('es-ES', options);
   };
 
-  return (
-    <motion.div
-      className="card content-card"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: id * 0.05 + 0.2 }}
-      exit={{ opacity: 0, y: -20 }}
-    >
-      <div className="content-header">
-        <h3><b>{titulo || "Sin título"}</b></h3>
-        <span className="content-type">{tipo_contenido || "Documento"}</span>
-      </div>
-
-      {descripcion && (
-        <>
-          <h4>Descripción:</h4>
-          <p>{descripcion}</p>
-        </>
-      )}
-
-      <div className="content-meta">
-        <div className="meta-item">
-          <Book size={16} />
-          <span>{materia || "Sin materia"}</span>
-        </div>
-        <div className="meta-item">
-          <Calendar size={16} />
-          <span>{semestre || "Sin semestre"}</span>
-        </div>
-        <div className="meta-item">
-          <User size={16} />
-          <span>{autor || "Anónimo"}</span>
-        </div>
-        <div className="meta-item">
-          <Clock size={16} />
-          <span>{fecha_subida ? formatDate(fecha_subida) : "Sin fecha"}</span>
-        </div>
-        {/* <div className="meta-item">
-          <FileText size={16} />
-          <span>{tipo_contenido || "Sin tipo"}</span>
-        </div> */}
-      </div>
-
-      <a 
-        href={ruta_archivo || "#"} 
-        onClick={handleDownload}
-        className="btn btn-secondary"
+    return (
+      <motion.div
+        className="card content-card"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: id * 0.01 + 0.2 }}
+        exit={{ opacity: 0, y: -20 }}
       >
-        <Download size={18} />
-        Descargar ({descargas || 0})
-      </a>
-    </motion.div>
-  );
-}
+        <div className="content-header">
+          <h3><b>{titulo || "Sin título"}</b></h3>
+          <span className="content-type">{tipo_contenido || "Documento"}</span>
+        </div>
+
+        {descripcion && (
+          <>
+            <h4>Descripción:</h4>
+            <p>{descripcion}</p>
+          </>
+        )}
+
+        <div className="content-meta">
+          <div className="meta-item">
+            <Book size={16} />
+            <span>{materia || "Sin materia"}</span>
+          </div>
+          <div className="meta-item">
+            <Calendar size={16} />
+            <span>{semestre || "Sin semestre"}</span>
+          </div>
+          <div className="meta-item">
+            <User size={16} />
+            <span>{autor || "Anónimo"}</span>
+          </div>
+          <div className="meta-item">
+            <Clock size={16} />
+            <span>{fecha_subida ? formatDate(fecha_subida) : "Sin fecha"}</span>
+          </div>
+          {/* <div className="meta-item">
+            <FileText size={16} />
+            <span>{tipo_contenido || "Sin tipo"}</span>
+          </div> */}
+        </div>
+
+        <a 
+          href={ruta_archivo || "#"} 
+          onClick={handleDownload}
+          className="btn btn-secondary"
+        >
+          <Download size={18} />
+          Descargar ({descargas || 0})
+        </a>
+      </motion.div>
+    );
+  }
 
 export default Card;
 
