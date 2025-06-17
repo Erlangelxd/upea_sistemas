@@ -1,4 +1,5 @@
-const API_URL = "http://localhost:8000"; // Cambia esto según tu backend
+// const API_URL = "http://localhost:8000"; // Cambia esto según tu backend
+const API_URL = "https://codigo-backend.onrender.com"; // Cambia esto según tu backend
 
 // Funciones básicas de fetch con manejo de errores mejorado
 async function fetchData(endpoint, errorMessage) {
