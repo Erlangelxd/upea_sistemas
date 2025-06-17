@@ -2,6 +2,26 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Menu, X, User, LogIn } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+/*
+<button
+  onClick={toggleAuth}
+  className="btn btn-secondary btn-sm"
+  style={{ marginLeft: "1rem" }}
+  >
+  {isAuthenticated ? "Logout (Test)" : "Login (Test)"}
+</button>
+
+<button
+  onClick={() => {
+  toggleAuth();
+  toggleMobileMenu();
+  }}
+  className="btn btn-secondary btn-sm"
+  style={{ marginTop: "1rem", width: "auto" }}
+  >
+  {isAuthenticated ? "Logout (Test)" : "Login (Test)"}
+</button>
+*/
 
 function Navbar({ isAuthenticated, toggleAuth, isMobileMenuOpen, toggleMobileMenu }) {
   return (
@@ -28,14 +48,6 @@ function Navbar({ isAuthenticated, toggleAuth, isMobileMenuOpen, toggleMobileMen
                 Registro
               </Link>
             )}
-
-            <button
-              onClick={toggleAuth}
-              className="btn btn-secondary btn-sm"
-              style={{ marginLeft: "1rem" }}
-            >
-              {isAuthenticated ? "Logout (Test)" : "Login (Test)"}
-            </button>
           </div>
 
           <button className="mobile-menu-button" onClick={toggleMobileMenu}>
@@ -63,16 +75,6 @@ function Navbar({ isAuthenticated, toggleAuth, isMobileMenuOpen, toggleMobileMen
             ) : (
               <Link to="/register" className="nav-link" onClick={toggleMobileMenu}>Registro</Link>
             )}
-            <button
-              onClick={() => {
-                toggleAuth();
-                toggleMobileMenu();
-              }}
-              className="btn btn-secondary btn-sm"
-              style={{ marginTop: "1rem", width: "auto" }}
-            >
-              {isAuthenticated ? "Logout (Test)" : "Login (Test)"}
-            </button>
           </motion.div>
         )}
       </AnimatePresence>
