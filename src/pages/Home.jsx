@@ -16,7 +16,6 @@ function Home({ isAuthenticated, user, onUpdateUser }) {
   const [filterSubject, setFilterSubject] = useState("");
   const [isMobile, setIsMobile] = useState(false);
 
-  // Verificar el tamaño de la pantalla al cargar y al cambiar tamaño
   useEffect(() => {
     const checkScreenSize = () => {
       setIsMobile(window.innerWidth < 768);
@@ -28,7 +27,6 @@ function Home({ isAuthenticated, user, onUpdateUser }) {
     return () => window.removeEventListener('resize', checkScreenSize);
   }, []);
 
-  // 1. Obtención de semestres
   useEffect(() => {
     const fetchSemestres = async () => {
       try {
@@ -55,7 +53,6 @@ function Home({ isAuthenticated, user, onUpdateUser }) {
     fetchSemestres();
   }, []);
 
-  // 2. Obtención de materias
   useEffect(() => {
     const fetchMaterias = async () => {
       try {
@@ -85,7 +82,6 @@ function Home({ isAuthenticated, user, onUpdateUser }) {
     fetchMaterias();
   }, []);
 
-  // 3. Obtención de academic_contents
   useEffect(() => {
     const fetchAcademicContents = async () => {
       try {
@@ -100,15 +96,12 @@ function Home({ isAuthenticated, user, onUpdateUser }) {
     fetchAcademicContents();
   }, []);
 
-  // Resetear filtro de materia cuando cambia el semestre
   useEffect(() => {
     setFilterSubject("");
   }, [filterSemester]);
 
-  // Lista de todas las materias únicas
   const subjects = [...new Set(materias.map(m => m.nombre))];
 
-  // Materias filtradas por semestre seleccionado
   const filteredSubjects = filterSemester
     ? [...new Set(
         materias
@@ -117,7 +110,6 @@ function Home({ isAuthenticated, user, onUpdateUser }) {
       )]
     : subjects;
 
-  // Filtrado de academic_contents
   const filteredContents = academicContents.filter(content => {
     const materia = materias.find(m => m.id === content.materia_id);
     const semestre = semestres.find(s => s.id === materia?.semestre_id);
