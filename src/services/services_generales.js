@@ -44,20 +44,19 @@ export async function getAcademicContents(filters = {}) {
     });
 
     const response = await fetch(`${API_URL}/contenidos/academicos?${params}`);
-    const result = await response.json(); // Objeto completo {success, data, count}
-    
     if (!response.ok) {
-      throw new Error(result.message || `Error ${response.status}`);
+      const errorData = await response.json().catch(() => ({}));
+      throw new Error(errorData.message || "Error al obtener contenidos académicos");
     }
-
-    console.log("Respuesta completa:", result);
-    return result.data; // Retornamos solo el array de datos
+    const result = await response.json();
+    return result.data;
   } catch (error) {
     console.error("Error fetching academic contents:", error);
     throw error;
   }
 }
-// Funciones específicas de documentos (se mantienen por compatibilidad)
+
+// Funciones específicas de documentos
 export async function getDocumentsBySubject(subjectId) {
   if (!subjectId) throw new Error("ID de materia no proporcionado");
   return fetchData(`/documentos/materia/${subjectId}`, "Error al obtener documentos");
@@ -87,8 +86,8 @@ export async function uploadDocument({ files, description, subjectId, userId, ty
   });
 
   if (!response.ok) {
-    const error = await response.json();
-    throw new Error(error.message || "Error al subir documentos");
+    const errorData = await response.json().catch(() => ({}));
+    throw new Error(errorData.message || "Error al subir documentos");
   }
   return await response.json();
 }
@@ -97,14 +96,20 @@ export async function registerDownload(contentId) {
   const response = await fetch(`${API_URL}/documentos/${contentId}/descargar`, {
     method: 'POST'
   });
-  if (!response.ok) throw new Error("Error al registrar descarga");
+  if (!response.ok) {
+    const errorData = await response.json().catch(() => ({}));
+    throw new Error(errorData.message || "Error al registrar descarga");
+  }
   return await response.json();
 }
 
 export async function downloadDocument(filePath, fileName) {
   try {
     const response = await fetch(filePath);
-    if (!response.ok) throw new Error("Error al descargar el archivo");
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      throw new Error(errorData.message || "Error al descargar el archivo");
+    }
     
     const blob = await response.blob();
     const url = window.URL.createObjectURL(blob);
