@@ -34,10 +34,26 @@ import React, { useEffect, useState } from "react";
       hidden: { opacity: 0, y: 20 },
       show: { opacity: 1, y: 0 },
     };
-      const formatearHora = (fechaYHora) =>
-      fechaYHora
-        ? new Intl.DateTimeFormat("es-ES", { hour: "2-digit", minute: "2-digit", hour12: true }).format(new Date(fechaYHora))
-        : "--:--";
+  const formatearFecha = (fecha) => {
+    if (!fecha) return "Fecha no disponible";
+    
+    const date = new Date(fecha);
+    return date.toLocaleDateString("es-ES", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    });
+  };
+
+  const formatearHora = (fechaYHora) => {
+    if (!fechaYHora) return "--:--";
+    
+    return new Intl.DateTimeFormat("es-ES", { 
+      hour: "2-digit", 
+      minute: "2-digit", 
+      hour12: true 
+    }).format(new Date(fechaYHora));
+  };
 
     return (
       <motion.div
@@ -69,11 +85,11 @@ import React, { useEffect, useState } from "react";
               <div className="announcement-meta">
                 <div className="meta-item">
                   <Calendar size={16} />
-                  <span>{announcement.fecha_publicacion}</span>
+                  <span>{formatearFecha(announcement.fecha_publicacion)}</span>
                 </div>
                 <div className="meta-item">
                   <Clock size={16} />
-                  <span>{announcement.fecha_publicacion.substring(11, 16)}</span>
+                  <span>{formatearHora(announcement.fecha_publicacion)}</span>
                 </div>
               </div>
             </motion.div>
