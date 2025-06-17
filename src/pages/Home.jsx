@@ -139,7 +139,7 @@ function Home({ isAuthenticated, user, onUpdateUser }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.3 }}
-            className="max-w-6xl mx-auto"
+            
           >
             {/* {isAuthenticated && (
               <UploadForm
