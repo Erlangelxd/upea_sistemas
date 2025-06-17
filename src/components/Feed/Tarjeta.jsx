@@ -43,10 +43,10 @@ function Card({
             <p>{descripcion}</p>
           </>
         )}
-          <div className="meta-item">
+          {/* <div className="meta-item">
             <User size={16} />
             <span>{autor || "Anónimo"}</span>
-          </div> 
+          </div>  */}
         <div className="content-meta">
           <div className="meta-item">
             <Book size={16} />
